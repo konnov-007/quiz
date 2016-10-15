@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Викторина по географии</string>
+    <string name="new_game_bttn_text">Новая игра</string>
+    <string name="feedback_bttn_text">Написать разработчику</string>
+    <string name="exit_bttn_text">Выход</string>
+
+    <string name="right_answer">Правильно!</string>
+
+    <string name="question_1">Какой язык является национальным в Кении?</string>
+    <string name="question_1_answer_1">Африкаанс</string>
+    <string name="question_1_answer_2">Кенийский</string>
+    <string name="question_1_answer_3">Суахили</string>
+    <string name="question_1_answer_4">Арабский</string>
+    <string name="question_1_answer_wrong">Не правильно! Национальный язык Кении - Суахили</string>
+
+    <string name="question_2">Какой город является столицей Австралии?</string>
+    <string name="question_2_answer_1">Сидней</string>
+    <string name="question_2_answer_2">Канберра</string>
+    <string name="question_2_answer_3">Мельбурн</string>
+    <string name="question_2_answer_4">Перт</string>
+
+</resources>

@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Geographical quiz</string>
+    <string name="new_game_bttn_text">New game</string>
+    <string name="feedback_bttn_text">Contact us</string>
+    <string name="exit_bttn_text">Exit</string>
+
+    <string name="right_answer">Right!</string>
+
+    <string name="question_1">What is the national language of Kenya?</string>
+    <string name="question_1_answer_1">Afrikaans</string>
+    <string name="question_1_answer_2">Kenyan</string>
+    <string name="question_1_answer_3">Kiswahili</string>
+    <string name="question_1_answer_4">Arabic</string>
+    <string name="question_1_answer_wrong">Wrong! The language of Kenya is Kiswahili</string>
+
+    <string name="question_2">What is the capital of Australia?</string>
+    <string name="question_2_answer_1">Sydney</string>
+    <string name="question_2_answer_2">Canberra</string>
+    <string name="question_2_answer_3">Melbourne</string>
+    <string name="question_2_answer_4">Perth</string>
+
+
+</resources>

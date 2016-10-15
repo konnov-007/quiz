@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="konnov.commr.vk.geographicalquiz.MainActivity"
+    android:background="@drawable/earth"
+    >
+<!-- android:background="@drawable/earth3au" -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/new_game_bttn_text"
+        android:id="@+id/new_game_button"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="158dp"
+        android:onClick="newGameMethod"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/feedback_bttn_text"
+        android:id="@+id/feedback_button"
+        android:layout_below="@+id/new_game_button"
+        android:layout_alignRight="@+id/new_game_button"
+        android:layout_alignEnd="@+id/new_game_button"
+        android:onClick="feedbackMethod"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/exit_bttn_text"
+        android:id="@+id/exit_button"
+        android:layout_below="@+id/feedback_button"
+        android:layout_centerHorizontal="true"
+        android:onClick="exitMethod"/>
+</RelativeLayout>
