@@ -5,7 +5,7 @@
     <string name="feedback_bttn_text">Написать разработчику</string>
     <string name="exit_bttn_text">Выход</string>
 
-    <string name="right_answer">Правильно!</string>
+    <string name="right_answer">Правильно! Количество вопросов, на которые вы ответили правильно: </string>
 
     <string name="question_1">Какой язык является национальным в Кении?</string>
     <string name="question_1_answer_1">Африкаанс</string>
