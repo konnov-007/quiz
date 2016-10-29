@@ -18,6 +18,10 @@
     <string name="question_2_answer_2">Canberra</string>
     <string name="question_2_answer_3">Melbourne</string>
     <string name="question_2_answer_4">Perth</string>
+    <string name="question_2_answer_wrong">Nah, the capital of Australia is Canberra</string>
 
 
+
+
+    <string name="congrats">Congratulations! Your score is </string>
 </resources>

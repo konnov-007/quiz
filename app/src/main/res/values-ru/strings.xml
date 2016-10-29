@@ -20,4 +20,7 @@
     <string name="question_2_answer_3">Мельбурн</string>
     <string name="question_2_answer_4">Перт</string>
 
+
+
+    <string name="congrats">Поздравляем!! Ваш счет: </string>
 </resources>
