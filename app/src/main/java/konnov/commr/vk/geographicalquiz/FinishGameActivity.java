@@ -16,7 +16,7 @@ public class FinishGameActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int finishScore = intent.getIntExtra("int_score", 0);
-        finishtext.setText(String.valueOf(finishScore));
-        //finishtext.setText(R.string.congrats + "" + String.valueOf(finishScore));
+        String outputString = getString(R.string.congrats, finishScore);
+        finishtext.setText(outputString);
     }
 }

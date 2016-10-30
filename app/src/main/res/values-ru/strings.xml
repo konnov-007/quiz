@@ -22,5 +22,5 @@
 
 
 
-    <string name="congrats">Поздравляем!! Ваш счет: </string>
+    <string name="congrats">Поздравляем!! Ваш счет: %1$d</string>
 </resources>
