@@ -18,7 +18,7 @@ public class MainGameActivity extends AppCompatActivity implements View.OnClickL
     Button fourth_answer_button;
     Questions questions = new Questions(MainGameActivity.this);
     int question = 1;
-    public static int score = 0;
+    int score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,30 +41,46 @@ public class MainGameActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         //TODO Auto-generated method stub
-        if(question == 3){
-            Intent intent = new Intent(this, FinishGameActivity.class);
-            intent.putExtra("score_value", score);
-            startActivity(intent);
-        }
+
         if (v.getId() == R.id.answer1) {
-            questions.mainGameMethod(question, 1, score);
+            score += questions.checkIfAnswerRight(question, 1);
             question++;
             questions.textForQuestion(question, question_text, first_answer_button, second_answer_button, third_answer_button, fourth_answer_button);
+            if(question == 3){
+                Intent intent = new Intent(MainGameActivity.this, FinishGameActivity.class);
+                intent.putExtra("int_score", score);
+                startActivity(intent);
+            }
         }
         if (v.getId() == R.id.answer2) {
-            questions.mainGameMethod(question, 2, score);
+            score += questions.checkIfAnswerRight(question, 2);
             question++;
             questions.textForQuestion(question, question_text, first_answer_button, second_answer_button, third_answer_button, fourth_answer_button);
+            if(question == 3){
+                Intent intent = new Intent(MainGameActivity.this, FinishGameActivity.class);
+                intent.putExtra("int_score", score);
+                startActivity(intent);
+            }
         }
         if (v.getId() == R.id.answer3) {
-            questions.mainGameMethod(question, 3, score);
+            score += questions.checkIfAnswerRight(question, 3);
             question++;
             questions.textForQuestion(question, question_text, first_answer_button, second_answer_button, third_answer_button, fourth_answer_button);
+            if(question == 3){
+                Intent intent = new Intent(MainGameActivity.this, FinishGameActivity.class);
+                intent.putExtra("int_score", score);
+                startActivity(intent);
             }
+        }
         if (v.getId() == R.id.answer4) {
-            questions.mainGameMethod(question, 4, score);
+            score += questions.checkIfAnswerRight(question, 4);
             question++;
             questions.textForQuestion(question, question_text, first_answer_button, second_answer_button, third_answer_button, fourth_answer_button);
+            if(question == 3){
+                Intent intent = new Intent(MainGameActivity.this, FinishGameActivity.class);
+                intent.putExtra("int_score", score);
+                startActivity(intent);
+            }
         }
 
     }

@@ -16,22 +16,7 @@ public class Questions extends AppCompatActivity{
         context = c;
     }
 
-    private static final String TAG = "Questions";
-
-    public void mainGameMethod(int questionNumber, int questionAnswer, int  score){
-        if(questionNumber == 1) {
-            Log.v(TAG, "questionNumber == 1");
-            checkIfAnswerRight(questionNumber, questionAnswer, score);
-            Log.v(TAG, "checkIfAnswerRight(questionNumber, questionAnswer, score);");
-        }
-        if(questionNumber == 2) {
-            Log.v(TAG, "questionNumber == 2");
-            //textForQuestion(questionNumber, question_text, first_answer_button, second_answer_button, third_answer_button, fourth_answer_button);
-            //Log.v(TAG, "textForQuestion(questionNumber, question_text, first_answer_button, second_answer_button, third_answer_button, fourth_answer_button);");
-            checkIfAnswerRight(questionNumber, questionAnswer, score);
-            Log.v(TAG, "checkIfAnswerRight(questionNumber, questionAnswer, score);");
-        }
-    }
+    //private static final String TAG = "Questions";
 
     public void textForQuestion(int questionNumber, TextView question_text, Button first_answer_button, Button second_answer_button, Button third_answer_button, Button fourth_answer_button){
         switch (questionNumber){
@@ -46,39 +31,26 @@ public class Questions extends AppCompatActivity{
         }
    }
 
-    public void checkIfAnswerRight(int questionNumber, int questionAnswer, int  score){
-        Log.v(TAG, "public void checkIfAnswerRight(int questionNumber, int questionAnswer, int  score){");
+    public int checkIfAnswerRight(int questionNumber, int questionAnswer){
+
         if(questionNumber == 1 && questionAnswer == 3){
-            Log.v(TAG, "if(questionNumber == 1 && questionAnswer == 3){");
-            score++;
-            Log.v(TAG, "score++");
-            Toast.makeText(context, R.string.right_answer+score, Toast.LENGTH_LONG).show();
-            Log.v(TAG, " Toast.makeText(this, R.string.right_answer+score, Toast.LENGTH_SHORT).show();");
+            Toast.makeText(context, R.string.right_answer, Toast.LENGTH_SHORT).show();
+            return 1;
         }
-        else if(questionNumber == 1){
-//            Log.v(TAG,"else if(questionNumber == 1){");
-//            Thread toastThread = new Thread() {
-//                public void run() {
-//                    Toast toast = Toast.makeText(getApplicationContext(), R.string.question_1_answer_wrong, Toast.LENGTH_LONG);
-//                    Log.v(TAG,"Toast toast = Toast.makeText(getApplicationContext(), R.string.question_1_answer_wrong, Toast.LENGTH_LONG);");
-//                    toast.show();
-//                    Log.v(TAG,"toast.show();");
-//                }
-//            };
-//            toastThread.start();
-//            Log.v(TAG,"toastThread.start();");
+        if(questionNumber == 1){
             Toast.makeText(context, R.string.question_1_answer_wrong, Toast.LENGTH_LONG).show();
-            }
+            return 0;
+        }
 
         if(questionNumber == 2 && questionAnswer == 2){
-            score++;
-            Toast.makeText(context, R.string.right_answer+score, Toast.LENGTH_LONG).show();
+            Toast.makeText(context, R.string.right_answer, Toast.LENGTH_SHORT).show();
+            return 1;
         }
-        else if(questionNumber == 2){
+        if(questionNumber == 2){
             Toast.makeText(context, R.string.question_2_answer_wrong, Toast.LENGTH_LONG).show();
+            return 0;
         }
-
-
+    return -999;
     }
 
 }

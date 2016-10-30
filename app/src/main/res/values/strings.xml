@@ -4,7 +4,7 @@
     <string name="feedback_bttn_text">Contact us</string>
     <string name="exit_bttn_text">Exit</string>
 
-    <string name="right_answer">Right! The number of questions you answered correct is </string>
+    <string name="right_answer">Right!</string>
 
     <string name="question_1">What is the national language of Kenya?</string>
     <string name="question_1_answer_1">Afrikaans</string>
