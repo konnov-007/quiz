@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     public void newGameMethod(View view){
         Intent intent = new Intent(this, MainGameActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void feedbackMethod(View view){
@@ -25,6 +26,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void exitMethod(View view){
+        finish();
+    }
+
+    @Override
+    public void onBackPressed(){
         finish();
     }
 

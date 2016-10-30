@@ -42,47 +42,37 @@ public class MainGameActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         //TODO Auto-generated method stub
 
-        if (v.getId() == R.id.answer1) {
-            score += questions.checkIfAnswerRight(question, 1);
-            question++;
-            questions.textForQuestion(question, question_text, first_answer_button, second_answer_button, third_answer_button, fourth_answer_button);
-            if(question == 3){
-                Intent intent = new Intent(MainGameActivity.this, FinishGameActivity.class);
-                intent.putExtra("int_score", score);
-                startActivity(intent);
-            }
+        switch (v.getId()) {
+            case R.id.answer1:
+                onClickAction(1);
+                break;
+            case R.id.answer2:
+                onClickAction(2);
+                break;
+            case R.id.answer3:
+                onClickAction(3);
+                break;
+            case R.id.answer4:
+                onClickAction(4);
+                break;
+            default:break;
         }
-        if (v.getId() == R.id.answer2) {
-            score += questions.checkIfAnswerRight(question, 2);
-            question++;
-            questions.textForQuestion(question, question_text, first_answer_button, second_answer_button, third_answer_button, fourth_answer_button);
-            if(question == 3){
-                Intent intent = new Intent(MainGameActivity.this, FinishGameActivity.class);
-                intent.putExtra("int_score", score);
-                startActivity(intent);
-            }
-        }
-        if (v.getId() == R.id.answer3) {
-            score += questions.checkIfAnswerRight(question, 3);
-            question++;
-            questions.textForQuestion(question, question_text, first_answer_button, second_answer_button, third_answer_button, fourth_answer_button);
-            if(question == 3){
-                Intent intent = new Intent(MainGameActivity.this, FinishGameActivity.class);
-                intent.putExtra("int_score", score);
-                startActivity(intent);
-            }
-        }
-        if (v.getId() == R.id.answer4) {
-            score += questions.checkIfAnswerRight(question, 4);
-            question++;
-            questions.textForQuestion(question, question_text, first_answer_button, second_answer_button, third_answer_button, fourth_answer_button);
-            if(question == 3){
-                Intent intent = new Intent(MainGameActivity.this, FinishGameActivity.class);
-                intent.putExtra("int_score", score);
-                startActivity(intent);
-            }
-        }
+    }
 
+    private void onClickAction(int answerNumber){
+        score += questions.checkIfAnswerRight(question, answerNumber);
+        question++;
+        questions.textForQuestion(question, question_text, first_answer_button, second_answer_button, third_answer_button, fourth_answer_button);
+        if(question == 3){
+            Intent intent = new Intent(MainGameActivity.this, FinishGameActivity.class);
+            intent.putExtra("int_score", score);
+            startActivity(intent);
+            finish();
+        }
+    }
+
+    @Override
+    public void onBackPressed(){
     }
 }
 
