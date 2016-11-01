@@ -22,5 +22,7 @@
 
 
 
+    <string name="back_to_main_menu_alert_title">Слился, петух?</string>
+    <string name="back_to_main_menu_alert_message">Вы уверены, что вы хотите вернуться в главное меню?</string>
     <string name="congrats">Поздравляем!! Ваш счет: %1$d</string>
 </resources>

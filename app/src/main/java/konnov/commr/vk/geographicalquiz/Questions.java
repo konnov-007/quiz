@@ -1,6 +1,7 @@
 package konnov.commr.vk.geographicalquiz;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Button;
@@ -35,22 +36,35 @@ public class Questions extends AppCompatActivity{
 
         if(questionNumber == 1 && questionAnswer == 3){
             Toast.makeText(context, R.string.right_answer, Toast.LENGTH_SHORT).show();
+            //delayTillNextQuestion(2000);
             return 1;
         }
         if(questionNumber == 1){
             Toast.makeText(context, R.string.question_1_answer_wrong, Toast.LENGTH_LONG).show();
+           //delayTillNextQuestion(3500);
             return 0;
         }
 
         if(questionNumber == 2 && questionAnswer == 2){
             Toast.makeText(context, R.string.right_answer, Toast.LENGTH_SHORT).show();
+            //delayTillNextQuestion(2000);
             return 1;
         }
         if(questionNumber == 2){
             Toast.makeText(context, R.string.question_2_answer_wrong, Toast.LENGTH_LONG).show();
+            //delayTillNextQuestion(3500);
             return 0;
         }
     return -999;
     }
+
+//    private void delayTillNextQuestion(int delayValue){
+//        final Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//            }
+//        }, delayValue);
+//    }
 
 }

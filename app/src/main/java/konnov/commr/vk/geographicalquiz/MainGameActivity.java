@@ -1,12 +1,14 @@
 package konnov.commr.vk.geographicalquiz;
 
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -73,6 +75,24 @@ public class MainGameActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onBackPressed(){
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.back_to_main_menu_alert_title)
+                .setMessage(R.string.back_to_main_menu_alert_message)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent(MainGameActivity.this, MainActivity.class));
+                        finish();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //no
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 }
 

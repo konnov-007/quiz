@@ -8,9 +8,9 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="konnov.commr.vk.geographicalquiz.MainActivity"
-    android:background="@drawable/earth"
+    android:background="@drawable/background_earth"
     >
-<!-- android:background="@drawable/earth3au" -->
+
 
     <Button
         android:layout_width="match_parent"

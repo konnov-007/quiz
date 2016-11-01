@@ -9,7 +9,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainGameActivity"
-    android:id="@+id/main_game_layout">
+    android:id="@+id/main_game_layout"
+    android:background="@drawable/background_maingame">
 
     <TableRow
         android:layout_width="wrap_content"
@@ -20,10 +21,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/question_1"
-            android:id="@+id/question_text"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:id="@+id/question_text" />
     </TableRow>
 
     <TableLayout
@@ -41,9 +39,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/question_1_answer_1"
                 android:id="@+id/answer1"
-                android:layout_above="@+id/answer3"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:layout_width="0dp"
                 android:layout_weight="1" />
 
@@ -51,9 +46,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/question_1_answer_2"
                 android:id="@+id/answer2"
-                android:layout_above="@+id/answer4"
-                android:layout_alignRight="@+id/answer4"
-                android:layout_alignEnd="@+id/answer4"
                 android:layout_width="0dp"
                 android:layout_weight="1" />
         </TableRow>
@@ -67,9 +59,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/question_1_answer_3"
                 android:id="@+id/answer3"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:layout_marginBottom="45dp"
                 android:layout_weight="1" />
 
@@ -78,9 +67,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/question_1_answer_4"
                 android:id="@+id/answer4"
-                android:layout_alignTop="@+id/answer3"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
                 android:layout_weight="1" />
         </TableRow>
 

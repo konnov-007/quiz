@@ -22,6 +22,7 @@
 
 
 
-
+    <string name="back_to_main_menu_alert_title">Give up?</string>
+    <string name="back_to_main_menu_alert_message">Are you sure you want to go to main menu?</string>
     <string name="congrats">Congratulations! Your score is %1$d</string>
 </resources>
