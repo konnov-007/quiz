@@ -20,7 +20,19 @@
     <string name="question_2_answer_4">Perth</string>
     <string name="question_2_answer_wrong">Nah, the capital of Australia is Canberra</string>
 
+    <string name="question_3">What is the country on the map?</string>
+    <string name="question_3_answer_1">Colombia</string>
+    <string name="question_3_answer_2">Ecuador</string>
+    <string name="question_3_answer_3">Guyana</string>
+    <string name="question_3_answer_4">Venezuela</string>
+    <string name="question_3_answer_wrong">lmao, it\'s Venezuela, you\'re dumbass</string>
 
+    <string name="question_4">What\'s the highest building in the world?</string>
+    <string name="question_4_answer_1">Burj Khalifa</string>
+    <string name="question_4_answer_2">Empire State Building</string>
+    <string name="question_4_answer_3">One World Trade Center</string>
+    <string name="question_4_answer_4">Shanghai Tower</string>
+    <string name="question_4_answer_wrong">Nein, the correct answer is Burj Khalifa</string>
 
     <string name="back_to_main_menu_alert_title">Give up?</string>
     <string name="back_to_main_menu_alert_message">Are you sure you want to go to main menu?</string>

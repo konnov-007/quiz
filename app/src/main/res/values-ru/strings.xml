@@ -12,15 +12,28 @@
     <string name="question_1_answer_2">Кенийский</string>
     <string name="question_1_answer_3">Суахили</string>
     <string name="question_1_answer_4">Арабский</string>
-    <string name="question_1_answer_wrong">Не правильно! Национальный язык Кении - Суахили</string>
+    <string name="question_1_answer_wrong">Неправильно! Национальный язык Кении - Суахили</string>
 
     <string name="question_2">Какой город является столицей Австралии?</string>
     <string name="question_2_answer_1">Сидней</string>
     <string name="question_2_answer_2">Канберра</string>
     <string name="question_2_answer_3">Мельбурн</string>
     <string name="question_2_answer_4">Перт</string>
+    <string name="question_2_answer_wrong">Неа, столица Австралии - Канберра</string>
 
+    <string name="question_3">Какая страна изображена на карте?</string>
+    <string name="question_3_answer_1">Колумбия</string>
+    <string name="question_3_answer_2">Эквадор</string>
+    <string name="question_3_answer_3">Гайана</string>
+    <string name="question_3_answer_4">Венесуэла</string>
+    <string name="question_3_answer_wrong">Мда, это Венесуэла, дибил</string>
 
+    <string name="question_4">Самое высокое здание в мире?</string>
+    <string name="question_4_answer_1">Бурдж-Халифа</string>
+    <string name="question_4_answer_2">Эмпаер-стейт-билдинг</string>
+    <string name="question_4_answer_3">Всемирный торговый центр </string>
+    <string name="question_4_answer_4">Шанхайская башня</string>
+    <string name="question_4_answer_wrong">Найн, правильный ответ - Бурдж-Халифа</string>
 
     <string name="back_to_main_menu_alert_title">Слился, петух?</string>
     <string name="back_to_main_menu_alert_message">Вы уверены, что вы хотите вернуться в главное меню?</string>

@@ -4,6 +4,7 @@ package konnov.commr.vk.geographicalquiz;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,12 +14,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainGameActivity extends AppCompatActivity implements View.OnClickListener{
-    TextView question_text;
-    Button first_answer_button;
-    Button second_answer_button;
-    Button third_answer_button;
-    Button fourth_answer_button;
-    Questions questions = new Questions(MainGameActivity.this);
+    protected TextView question_text;
+    protected Button first_answer_button;
+    protected Button second_answer_button;
+    protected Button third_answer_button;
+    protected Button fourth_answer_button;
+    protected ImageView question_pic;
     int question = 1;
     int score = 0;
 
@@ -32,6 +33,7 @@ public class MainGameActivity extends AppCompatActivity implements View.OnClickL
         second_answer_button = (Button) findViewById(R.id.answer2);
         third_answer_button = (Button) findViewById(R.id.answer3);
         fourth_answer_button = (Button) findViewById(R.id.answer4);
+        question_pic = (ImageView) findViewById(R.id.question_pic);
 
         first_answer_button.setOnClickListener(this);
         second_answer_button.setOnClickListener(this);
@@ -62,10 +64,11 @@ public class MainGameActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void onClickAction(int answerNumber){
+        Questions questions = new Questions(MainGameActivity.this, question_text, first_answer_button, second_answer_button, third_answer_button, fourth_answer_button, question_pic);
         score += questions.checkIfAnswerRight(question, answerNumber);
         question++;
-        questions.textForQuestion(question, question_text, first_answer_button, second_answer_button, third_answer_button, fourth_answer_button);
-        if(question == 3){
+        questions.textForQuestion(question);
+        if(question == 5){
             Intent intent = new Intent(MainGameActivity.this, FinishGameActivity.class);
             intent.putExtra("int_score", score);
             startActivity(intent);
