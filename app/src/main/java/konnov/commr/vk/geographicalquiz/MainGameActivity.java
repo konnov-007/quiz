@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
+import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -64,10 +65,34 @@ public class MainGameActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void onClickAction(int answerNumber){
-        Questions questions = new Questions(MainGameActivity.this, question_text, first_answer_button, second_answer_button, third_answer_button, fourth_answer_button, question_pic);
-        score += questions.checkIfAnswerRight(question, answerNumber);
+        final Questions questions = new Questions(MainGameActivity.this, question_text, first_answer_button, second_answer_button, third_answer_button, fourth_answer_button, question_pic);
+        int delay;
+        if(questions.checkIfAnswerRight(question, answerNumber) == 1) {
+            score++;
+            delay = 2000;
+        }
+        else
+            delay = 3500;
+        first_answer_button.setEnabled(false);
+        second_answer_button.setEnabled(false);
+        third_answer_button.setEnabled(false);
+        fourth_answer_button.setEnabled(false);
         question++;
-        questions.textForQuestion(question);
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                questions.textForQuestion(question);
+                first_answer_button.setBackgroundResource(android.R.drawable.btn_default);
+                second_answer_button.setBackgroundResource(android.R.drawable.btn_default);
+                third_answer_button.setBackgroundResource(android.R.drawable.btn_default);
+                fourth_answer_button.setBackgroundResource(android.R.drawable.btn_default);
+                first_answer_button.setEnabled(true);
+                second_answer_button.setEnabled(true);
+                third_answer_button.setEnabled(true);
+                fourth_answer_button.setEnabled(true);
+            }
+        }, delay);
         if(question == 5){
             Intent intent = new Intent(MainGameActivity.this, FinishGameActivity.class);
             intent.putExtra("int_score", score);

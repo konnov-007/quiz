@@ -1,6 +1,7 @@
 package konnov.commr.vk.geographicalquiz;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -66,39 +67,84 @@ public class Questions extends AppCompatActivity{
     public int checkIfAnswerRight(int questionNumber, int questionAnswer){
 
         if(questionNumber == 1 && questionAnswer == 3){
+            third_answer_button.setBackgroundColor(Color.GREEN);
             Toast.makeText(context, R.string.right_answer, Toast.LENGTH_SHORT).show();
-            //sleep(2000);
             return 1;
         }
         if(questionNumber == 1){
+            switch (questionAnswer){
+                case 1:
+                    first_answer_button.setBackgroundColor(Color.RED);
+                    break;
+                case 2:
+                    second_answer_button.setBackgroundColor(Color.RED);
+                    break;
+                case 4:
+                    fourth_answer_button.setBackgroundColor(Color.RED);
+                    break;
+            }
             Toast.makeText(context, R.string.question_1_answer_wrong, Toast.LENGTH_LONG).show();
-            //sleep(3500);
             return 0;
         }
 
         if(questionNumber == 2 && questionAnswer == 2){
+            second_answer_button.setBackgroundColor(Color.GREEN);
             Toast.makeText(context, R.string.right_answer, Toast.LENGTH_SHORT).show();
-            //sleep(2000);
             return 1;
         }
         if(questionNumber == 2){
+            switch (questionAnswer){
+                case 1:
+                    first_answer_button.setBackgroundColor(Color.RED);
+                    break;
+                case 3:
+                    third_answer_button.setBackgroundColor(Color.RED);
+                    break;
+                case 4:
+                    fourth_answer_button.setBackgroundColor(Color.RED);
+                    break;
+            }
             Toast.makeText(context, R.string.question_2_answer_wrong, Toast.LENGTH_LONG).show();
             //sleep(3500);
             return 0;
         }
         if(questionNumber == 3 && questionAnswer == 4){
             Toast.makeText(context, R.string.right_answer, Toast.LENGTH_SHORT).show();
+            fourth_answer_button.setBackgroundColor(Color.GREEN);
             return 1;
         }
         if(questionNumber == 3){
+            switch (questionAnswer){
+                case 1:
+                    first_answer_button.setBackgroundColor(Color.RED);
+                    break;
+                case 2:
+                    second_answer_button.setBackgroundColor(Color.RED);
+                    break;
+                case 3:
+                    third_answer_button.setBackgroundColor(Color.RED);
+                    break;
+            }
             Toast.makeText(context, R.string.question_3_answer_wrong, Toast.LENGTH_LONG).show();
             return 0;
         }
         if(questionNumber == 4 && questionAnswer == 1){
             Toast.makeText(context, R.string.right_answer, Toast.LENGTH_SHORT).show();
+            first_answer_button.setBackgroundColor(Color.GREEN);
             return 1;
         }
         if(questionNumber == 4){
+            switch (questionAnswer){
+                case 2:
+                    second_answer_button.setBackgroundColor(Color.RED);
+                    break;
+                case 3:
+                    third_answer_button.setBackgroundColor(Color.RED);
+                    break;
+                case 4:
+                    fourth_answer_button.setBackgroundColor(Color.RED);
+                    break;
+            }
             Toast.makeText(context, R.string.question_4_answer_wrong, Toast.LENGTH_LONG).show();
             return 0;
         }
