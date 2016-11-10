@@ -29,12 +29,15 @@
 
     <string name="question_4">What\'s the highest building in the world?</string>
     <string name="question_4_answer_1">Burj Khalifa</string>
-    <string name="question_4_answer_2">Empire State Building</string>
-    <string name="question_4_answer_3">One World Trade Center</string>
+    <string name="question_4_answer_2">Empire State &#10;Building</string>
+    <string name="question_4_answer_3">One World &#10;Trade Center</string>
     <string name="question_4_answer_4">Shanghai Tower</string>
     <string name="question_4_answer_wrong">Nein, the correct answer is Burj Khalifa</string>
 
     <string name="back_to_main_menu_alert_title">Give up?</string>
     <string name="back_to_main_menu_alert_message">Are you sure you want to go to main menu?</string>
     <string name="congrats">Congratulations! Your score is %1$d</string>
+
+
+    <string name="image_content_description">image question</string>
 </resources>
