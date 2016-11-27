@@ -1,41 +1,49 @@
 <resources>
     <string name="app_name">Geographical quiz</string>
-    <string name="new_game_bttn_text">New game</string>
-    <string name="feedback_bttn_text">Contact us</string>
+    <string name="new_game_bttn_text">Play</string>
+    <string name="setting_bttn_text">Setting</string>
+    <string name="about_bttn_text">About</string>
     <string name="exit_bttn_text">Exit</string>
 
     <string name="right_answer">Right!</string>
 
-    <string name="question_1">What is the national language of Kenya?</string>
-    <string name="question_1_answer_1">Afrikaans</string>
-    <string name="question_1_answer_2">Kenyan</string>
-    <string name="question_1_answer_3">Kiswahili</string>
-    <string name="question_1_answer_4">Arabic</string>
-    <string name="question_1_answer_wrong">Wrong! The language of Kenya is Kiswahili</string>
+    <string name="level_1_question_1">What is the most populated country in the world?</string>
+    <string name="level_1_question_1_answer_1">India</string>
+    <string name="level_3_question_1">What is the national language of Kenya?</string>
+    <string name="level_3_question_1_answer_1">Afrikaans</string>
+    <string name="level_3_question_1_answer_2">Kenyan</string>
+    <string name="level_3_question_1_answer_3">Kiswahili</string>
+    <string name="level_3_question_1_answer_4">Arabic</string>
+    <string name="level_3_question_1_answer_wrong">Wrong! The language of Kenya is Kiswahili</string>
 
-    <string name="question_2">What is the capital of Australia?</string>
-    <string name="question_2_answer_1">Sydney</string>
-    <string name="question_2_answer_2">Canberra</string>
-    <string name="question_2_answer_3">Melbourne</string>
-    <string name="question_2_answer_4">Perth</string>
-    <string name="question_2_answer_wrong">Nah, the capital of Australia is Canberra</string>
+    <string name="level_3_question_2">What is the capital of Australia?</string>
+    <string name="level_3_question_2_answer_1">Sydney</string>
+    <string name="level_3_question_2_answer_2">Canberra</string>
+    <string name="level_3_question_2_answer_3">Melbourne</string>
+    <string name="level_3_question_2_answer_4">Perth</string>
+    <string name="level_3_question_2_answer_wrong">Nah, the capital of Australia is Canberra</string>
 
-    <string name="question_3">What is the country on the map?</string>
-    <string name="question_3_answer_1">Colombia</string>
-    <string name="question_3_answer_2">Ecuador</string>
-    <string name="question_3_answer_3">Guyana</string>
-    <string name="question_3_answer_4">Venezuela</string>
-    <string name="question_3_answer_wrong">lmao, it\'s Venezuela, you\'re dumbass</string>
+    <string name="level_3_question_3">What is the country on the map?</string>
+    <string name="level_3_question_3_answer_1">Colombia</string>
+    <string name="level_3_question_3_answer_2">Ecuador</string>
+    <string name="level_3_question_3_answer_3">Guyana</string>
+    <string name="level_3_question_3_answer_4">Venezuela</string>
+    <string name="level_3_question_3_answer_wrong">lmao, it\'s Venezuela, you\'re dumbass</string>
 
-    <string name="question_4">What\'s the highest building in the world?</string>
-    <string name="question_4_answer_1">Burj Khalifa</string>
-    <string name="question_4_answer_2">Empire State &#10;Building</string>
-    <string name="question_4_answer_3">One World &#10;Trade Center</string>
-    <string name="question_4_answer_4">Shanghai Tower</string>
-    <string name="question_4_answer_wrong">Nein, the correct answer is Burj Khalifa</string>
+    <string name="level_3_question_4">What\'s the highest building in the world?</string>
+    <string name="level_3_question_4_answer_1">Burj Khalifa</string>
+    <string name="level_3_question_4_answer_2">Empire State &#10;Building</string>
+    <string name="level_3_question_4_answer_3">One World &#10;Trade Center</string>
+    <string name="level_3_question_4_answer_4">Shanghai Tower</string>
+    <string name="level_3_question_4_answer_wrong">Nein, the correct answer is Burj Khalifa</string>
+
 
     <string name="back_to_main_menu_alert_title">Give up?</string>
     <string name="back_to_main_menu_alert_message">Are you sure you want to go to main menu?</string>
+    <string name="level_one_button">Level 1 (easy)</string>
+    <string name="level_two_button">Level 2 (medium)</string>
+    <string name="level_three_button">Level 3 (difficult)</string>
+    <string name="level_four_button">Level 4 (impossible)</string>
     <string name="congrats">Congratulations! Your score is %1$d</string>
 
 

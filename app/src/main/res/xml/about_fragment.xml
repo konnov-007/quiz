@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference
+        android:key="about_version"
+        android:summary="1.0"
+        android:title="Version">
+    </Preference>
+    <Preference
+        android:key="about_pro"
+        android:title="Support the developer">
+    </Preference>
+    <Preference
+        android:key="about_rate"
+        android:title="Rate this app">
+    </Preference>
+    <Preference
+        android:key="about_feedback"
+        android:title="Send feedback">
+    </Preference>
+    <Preference
+        android:key="about_licences"
+        android:title="Contributors and licence">
+    </Preference>
+    <Preference
+        android:key="about_vk"
+        android:title="Contact me on vk">
+    </Preference>
+</PreferenceScreen>

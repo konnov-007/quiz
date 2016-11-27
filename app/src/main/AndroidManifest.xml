@@ -2,15 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="konnov.commr.vk.geographicalquiz">
 
-
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,10 +17,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainGameActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".FinishGameActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".MainGameActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FinishGameActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LevelSelector"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".about_package.AboutActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

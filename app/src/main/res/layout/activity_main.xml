@@ -11,25 +11,24 @@
     android:background="@drawable/background_earth"
     >
 
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/exit_bttn_text"
-        android:id="@+id/exit_button"
-        android:onClick="exitMethod"
+        android:text="@string/new_game_bttn_text"
+        android:id="@+id/new_game_button"
+        android:layout_marginTop="120dp"
+        android:onClick="newGameMethod"
         android:background="@android:color/holo_blue_light"
-        android:layout_below="@+id/feedback_button"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/feedback_bttn_text"
-        android:id="@+id/feedback_button"
-        android:onClick="feedbackMethod"
+        android:text="@string/setting_bttn_text"
+        android:id="@+id/settings_button"
+        android:onClick="settingsMethod"
         android:background="@android:color/holo_blue_light"
         android:layout_below="@+id/new_game_button"
         android:layout_alignParentLeft="true"
@@ -39,12 +38,27 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/new_game_bttn_text"
-        android:id="@+id/new_game_button"
-        android:layout_marginTop="158dp"
-        android:onClick="newGameMethod"
+        android:text="@string/about_bttn_text"
+        android:id="@+id/about_button"
+        android:onClick="aboutMethod"
         android:background="@android:color/holo_blue_light"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/settings_button"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/exit_bttn_text"
+        android:id="@+id/exit_button"
+        android:onClick="exitMethod"
+        android:background="@android:color/holo_blue_light"
+        android:layout_below="@+id/about_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp" />
+
+
+
 </RelativeLayout>
