@@ -42,14 +42,9 @@ public class MainGameActivity extends AppCompatActivity implements View.OnClickL
 
         Intent intent = getIntent();
         level = intent.getIntExtra("level", 0);
+        final Questions questions = new Questions(MainGameActivity.this, question_text, first_answer_button, second_answer_button, third_answer_button, fourth_answer_button, question_pic, level);
+        questions.textForQuestion(question);
 
-        if(level == 3) {
-            question_text.setText(R.string.level_3_question_1);
-            first_answer_button.setText(R.string.level_3_question_1_answer_1);
-            second_answer_button.setText(R.string.level_3_question_1_answer_2);
-            third_answer_button.setText(R.string.level_3_question_1_answer_3);
-            fourth_answer_button.setText(R.string.level_3_question_1_answer_4);
-        }
     }
 
     @Override
@@ -102,7 +97,7 @@ public class MainGameActivity extends AppCompatActivity implements View.OnClickL
                 fourth_answer_button.setEnabled(true);
             }
         }, delay);
-        if(question == 5){
+        if(question == 11){
             Intent intent = new Intent(MainGameActivity.this, FinishGameActivity.class);
             intent.putExtra("int_score", score);
             startActivity(intent);

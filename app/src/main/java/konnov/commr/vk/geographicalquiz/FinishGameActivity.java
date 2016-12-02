@@ -1,8 +1,10 @@
 package konnov.commr.vk.geographicalquiz;
 
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class FinishGameActivity extends AppCompatActivity {
@@ -25,4 +27,6 @@ public class FinishGameActivity extends AppCompatActivity {
         startActivity(new Intent(this, LevelSelector.class));
         finish();
     }
+
+
 }

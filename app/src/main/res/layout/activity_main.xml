@@ -23,12 +23,13 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/setting_bttn_text"
-        android:id="@+id/settings_button"
-        android:onClick="settingsMethod"
+        android:text="@string/about_text"
+        android:id="@+id/about_button"
+        android:onClick="aboutMethod"
         android:background="@android:color/holo_blue_light"
         android:layout_below="@+id/new_game_button"
         android:layout_alignParentLeft="true"
@@ -38,20 +39,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/about_bttn_text"
-        android:id="@+id/about_button"
-        android:onClick="aboutMethod"
-        android:background="@android:color/holo_blue_light"
-        android:layout_below="@+id/settings_button"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="@string/exit_bttn_text"
-        android:id="@+id/exit_button"
         android:onClick="exitMethod"
         android:background="@android:color/holo_blue_light"
         android:layout_below="@+id/about_button"
