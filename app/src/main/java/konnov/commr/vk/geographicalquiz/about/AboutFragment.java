@@ -1,4 +1,4 @@
-package konnov.commr.vk.geographicalquiz.about_package;
+package konnov.commr.vk.geographicalquiz.about;
 
 import android.content.Intent;
 import android.net.Uri;

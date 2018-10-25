@@ -1,11 +1,11 @@
-package konnov.commr.vk.geographicalquiz;
+package konnov.commr.vk.geographicalquiz.activities;
 
 import android.content.Intent;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
+
+import konnov.commr.vk.geographicalquiz.R;
 
 public class FinishGameActivity extends AppCompatActivity {
     TextView finishtext;

@@ -1,4 +1,4 @@
-package konnov.commr.vk.geographicalquiz.about_package;
+package konnov.commr.vk.geographicalquiz.about;
 
 /**
  * Created by Ilya on 28.11.2016.

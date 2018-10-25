@@ -1,14 +1,12 @@
-package konnov.commr.vk.geographicalquiz;
+package konnov.commr.vk.geographicalquiz.activities;
 
 import android.content.Intent;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
-import konnov.commr.vk.geographicalquiz.about_package.AboutActivity;
-import konnov.commr.vk.geographicalquiz.about_package.AboutFragment;
+import konnov.commr.vk.geographicalquiz.R;
+import konnov.commr.vk.geographicalquiz.about.AboutActivity;
 
 public class MainActivity extends AppCompatActivity {
 

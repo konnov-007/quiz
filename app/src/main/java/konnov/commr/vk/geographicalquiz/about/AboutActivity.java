@@ -1,15 +1,12 @@
-package konnov.commr.vk.geographicalquiz.about_package;
+package konnov.commr.vk.geographicalquiz.about;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toolbar;
 
-import konnov.commr.vk.geographicalquiz.MainActivity;
+import konnov.commr.vk.geographicalquiz.activities.MainActivity;
 import konnov.commr.vk.geographicalquiz.R;
 
 public class AboutActivity extends AppCompatActivity {

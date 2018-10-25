@@ -24,7 +24,7 @@ public class Questions extends AppCompatActivity{
 
     //private static final String TAG = "Questions";
 
-    Questions(Context c, TextView question_text, Button first_answer_button, Button second_answer_button, Button third_answer_button, Button fourth_answer_button, ImageView question_pic, int level){
+    public Questions(Context c, TextView question_text, Button first_answer_button, Button second_answer_button, Button third_answer_button, Button fourth_answer_button, ImageView question_pic, int level){
         context = c;
         this.question_text = question_text;
         this.first_answer_button = first_answer_button;

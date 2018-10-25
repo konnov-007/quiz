@@ -1,4 +1,4 @@
-package konnov.commr.vk.geographicalquiz;
+package konnov.commr.vk.geographicalquiz.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import konnov.commr.vk.geographicalquiz.Questions;
+import konnov.commr.vk.geographicalquiz.R;
 
 public class MainGameActivity extends AppCompatActivity implements View.OnClickListener{
     protected TextView question_text;
