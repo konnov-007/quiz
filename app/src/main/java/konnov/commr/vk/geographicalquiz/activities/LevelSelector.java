@@ -27,7 +27,7 @@ public class LevelSelector extends AppCompatActivity {
     }
 
     public void startQuestions(android.view.View v) {
-        Intent intent = new Intent(this, MainGameActivity.class);
+        Intent intent = new Intent(this, GameActivity.class);
         switch (v.getId()) {
             case R.id.button:
                 level = 1;
@@ -52,7 +52,7 @@ public class LevelSelector extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle arrow click here
         if (item.getItemId() == android.R.id.home) {
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, MainMenuActivity.class));
             finish();
         }
         return super.onOptionsItemSelected(item);
@@ -60,7 +60,7 @@ public class LevelSelector extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, MainMenuActivity.class));
         finish();
     }
 

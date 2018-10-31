@@ -15,7 +15,7 @@ import android.widget.TextView;
 import konnov.commr.vk.geographicalquiz.Questions;
 import konnov.commr.vk.geographicalquiz.R;
 
-public class MainGameActivity extends AppCompatActivity implements View.OnClickListener{
+public class GameActivity extends AppCompatActivity implements View.OnClickListener{
     protected TextView question_text;
     protected Button first_answer_button;
     protected Button second_answer_button;
@@ -45,7 +45,7 @@ public class MainGameActivity extends AppCompatActivity implements View.OnClickL
 
         Intent intent = getIntent();
         level = intent.getIntExtra("level", 0);
-        final Questions questions = new Questions(MainGameActivity.this, question_text, first_answer_button, second_answer_button, third_answer_button, fourth_answer_button, question_pic, level);
+        final Questions questions = new Questions(GameActivity.this, question_text, first_answer_button, second_answer_button, third_answer_button, fourth_answer_button, question_pic, level);
         questions.textForQuestion(question);
 
     }
@@ -72,7 +72,7 @@ public class MainGameActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void onClickAction(int answerNumber){
-        final Questions questions = new Questions(MainGameActivity.this, question_text, first_answer_button, second_answer_button, third_answer_button, fourth_answer_button, question_pic, level);
+        final Questions questions = new Questions(GameActivity.this, question_text, first_answer_button, second_answer_button, third_answer_button, fourth_answer_button, question_pic, level);
         int delay;
         if(questions.checkIfAnswerRight(question, answerNumber) == 1) {
             score++;
@@ -101,7 +101,7 @@ public class MainGameActivity extends AppCompatActivity implements View.OnClickL
             }
         }, delay);
         if(question == 11){
-            Intent intent = new Intent(MainGameActivity.this, FinishGameActivity.class);
+            Intent intent = new Intent(GameActivity.this, FinishGameActivity.class);
             intent.putExtra("int_score", score);
             startActivity(intent);
             finish();
@@ -116,7 +116,7 @@ public class MainGameActivity extends AppCompatActivity implements View.OnClickL
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        startActivity(new Intent(MainGameActivity.this, LevelSelector.class));
+                        startActivity(new Intent(GameActivity.this, LevelSelector.class));
                         finish();
                     }
                 })

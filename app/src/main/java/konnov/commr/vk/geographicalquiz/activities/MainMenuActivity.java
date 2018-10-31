@@ -6,9 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import konnov.commr.vk.geographicalquiz.R;
-import konnov.commr.vk.geographicalquiz.about.AboutActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainMenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,20 +15,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void newGameMethod(View view){
+    public void newGame(View view){
         Intent intent = new Intent(this, LevelSelector.class);
         startActivity(intent);
         finish();
     }
 
 
-    public void aboutMethod(View view){
+    public void about(View view){
         Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
         finish();
     }
 
-    public void exitMethod(View view){
+    public void exit(View view){
         finish();
     }
 
@@ -46,6 +45,4 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         finish();
     }
-
-
 }

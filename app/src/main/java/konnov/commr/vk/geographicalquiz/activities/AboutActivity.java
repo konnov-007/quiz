@@ -1,4 +1,4 @@
-package konnov.commr.vk.geographicalquiz.about;
+package konnov.commr.vk.geographicalquiz.activities;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -6,7 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import konnov.commr.vk.geographicalquiz.activities.MainActivity;
+import konnov.commr.vk.geographicalquiz.about.AboutFragment;
+import konnov.commr.vk.geographicalquiz.activities.MainMenuActivity;
 import konnov.commr.vk.geographicalquiz.R;
 
 public class AboutActivity extends AppCompatActivity {
@@ -27,7 +28,7 @@ public class AboutActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, MainMenuActivity.class));
         finish();
     }
 
@@ -35,7 +36,7 @@ public class AboutActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle arrow click here
         if (item.getItemId() == android.R.id.home) {
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, MainMenuActivity.class));
             finish();
         }
         return super.onOptionsItemSelected(item);
