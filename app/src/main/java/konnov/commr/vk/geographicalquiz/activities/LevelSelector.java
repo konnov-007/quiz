@@ -30,7 +30,7 @@ public class LevelSelector extends AppCompatActivity {
         Intent intent = new Intent(this, GameActivity.class);
         switch (v.getId()) {
             case R.id.button:
-                level = 1;
+                level = 1; //TODO - 0
                 intent.putExtra("level", level);
                 startActivity(intent);
                 break;
@@ -39,7 +39,7 @@ public class LevelSelector extends AppCompatActivity {
                 break;
             case R.id.button3:
                 level = 3;
-                intent.putExtra("level", level);
+                intent.putExtra("level", level); //TODO - DELETE
                 startActivity(intent);
                 break;
             case R.id.button4:

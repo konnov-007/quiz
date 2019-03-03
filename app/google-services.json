@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "425284738197",
+    "firebase_url": "https://geoquiz-fbd42.firebaseio.com",
+    "project_id": "geoquiz-fbd42",
+    "storage_bucket": "geoquiz-fbd42.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425284738197:android:960c5d7630356878",
+        "android_client_info": {
+          "package_name": "konnov.commr.vk.geographicalquiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "425284738197-qp80afc7b22tqujkn90okhtjetmk824n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcgtwAXHnx8oRMR21rBZBJ3t5wSrZ2yMg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -29,15 +29,14 @@
 
 
 
-
-    <string name="level_1_question_1">The smallest continent</string>
+    <string name="level_1_question_1">The smallest continent</string>  <!--question_id: 0-->
     <string name="level_1_question_1_answer_1">Europe</string>
     <string name="level_1_question_1_answer_2">Australia</string>
     <string name="level_1_question_1_answer_3">North America</string>
     <string name="level_1_question_1_answer_4">Africa</string>
     <string name="level_1_question_1_answer_wrong">It\'s Australia (8 600 000 km²)</string>
 
-    <string name="level_1_question_2">The most populated country in the world</string>
+    <string name="level_1_question_2">The most populated country in the world</string> <!--question_id: 1-->
     <string name="level_1_question_2_answer_1">India</string>
     <string name="level_1_question_2_answer_2">United States</string>
     <string name="level_1_question_2_answer_3">Russia</string>
