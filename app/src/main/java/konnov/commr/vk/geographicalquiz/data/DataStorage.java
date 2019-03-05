@@ -1,22 +1,12 @@
 package konnov.commr.vk.geographicalquiz.data;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
-import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 
 import konnov.commr.vk.geographicalquiz.interfaces.Interfaces;
+import konnov.commr.vk.geographicalquiz.interfaces.WebService;
 
-public class DataStorage {
+public class DataStorage  implements WebService {
     private static DataStorage mInstance = null;
-    private DatabaseReference mRootRefQuestions = FirebaseDatabase.getInstance().getReference("questions");
-    private DatabaseReference mRootRefTranslations = FirebaseDatabase.getInstance().getReference("translations");
-    private GenericTypeIndicator<ArrayList<Object>> objectsGTypeInd = new GenericTypeIndicator<ArrayList<Object>>() {};
-    private Interfaces interfaces = Interfaces.getInstance();
 
     public static DataStorage getInstance() {
         if (mInstance == null) {
@@ -26,35 +16,17 @@ public class DataStorage {
     }
 
     private DataStorage(){
-        startListeningToServer();
+        Interfaces interfaces = Interfaces.getInstance();
+        interfaces.subscribeWebService(getClass().getName(), this);
     }
 
-    private void startListeningToServer(){
-        mRootRefQuestions.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                ArrayList<Object> objectHashMap = dataSnapshot.getValue(objectsGTypeInd);
-                interfaces.reportQuestionsReceived(objectHashMap);
-                System.out.println(objectHashMap);
-            }
+    @Override
+    public void questionsReceived(ArrayList<Object> questions) {
+        System.out.println(questions);
+    }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
-            }
-        });
-        mRootRefTranslations.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                ArrayList<Object> objectHashMap = dataSnapshot.getValue(objectsGTypeInd);
-                interfaces.reportTranslationsReceived(objectHashMap);
-                System.out.println(objectHashMap);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
-            }
-        });
+    @Override
+    public void translationsReceived(ArrayList<Object> translations) {
+        System.out.println(translations);
     }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Interfaces {
-    private HashMap<String, DataStorageModel> dataStorageModelMap = new HashMap<>();
+    private HashMap<String, WebService> WebServiceRefMap = new HashMap<>();
 
     private static Interfaces mInstance = null;
 
@@ -17,25 +17,25 @@ public class Interfaces {
 
     private Interfaces(){};
 
-    public void subscribeDataStorageModel(String classname, DataStorageModel context){
-        if(!dataStorageModelMap.containsKey(classname)) {
-            dataStorageModelMap.put(classname, context);
+    public void subscribeWebService(String classname, WebService context){
+        if(!WebServiceRefMap.containsKey(classname)) {
+            WebServiceRefMap.put(classname, context);
         }
     }
 
-    public void unscubscribeDataStorageModel(String classname){
-        dataStorageModelMap.remove(classname);
+    public void unscubscribeWebService(String classname){
+        WebServiceRefMap.remove(classname);
     }
 
     public void reportQuestionsReceived(ArrayList<Object> questions){
-        for(DataStorageModel dataStorageModel : dataStorageModelMap.values()) {
-            dataStorageModel.questionsReceived(questions);
+        for(WebService webService : WebServiceRefMap.values()) {
+            webService.questionsReceived(questions);
         }
     };
 
     public void reportTranslationsReceived(ArrayList<Object> translations){
-        for(DataStorageModel dataStorageModel : dataStorageModelMap.values()) {
-            dataStorageModel.translationsReceived(translations);
+        for(WebService webService : WebServiceRefMap.values()) {
+            webService.translationsReceived(translations);
         }
     };
 }
