@@ -1,7 +1,9 @@
 package konnov.commr.vk.geographicalquiz.interfaces;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+
+import konnov.commr.vk.geographicalquiz.objects.Question;
+import konnov.commr.vk.geographicalquiz.objects.Translation;
 
 public class Interfaces {
     private HashMap<String, WebService> WebServiceRefMap = new HashMap<>();
@@ -27,13 +29,13 @@ public class Interfaces {
         WebServiceRefMap.remove(classname);
     }
 
-    public void reportQuestionsReceived(ArrayList<Object> questions){
+    public void reportQuestionsReceived(HashMap<Integer, Question> questions){
         for(WebService webService : WebServiceRefMap.values()) {
             webService.questionsReceived(questions);
         }
     };
 
-    public void reportTranslationsReceived(ArrayList<Object> translations){
+    public void reportTranslationsReceived(HashMap<Integer, Translation> translations){
         for(WebService webService : WebServiceRefMap.values()) {
             webService.translationsReceived(translations);
         }

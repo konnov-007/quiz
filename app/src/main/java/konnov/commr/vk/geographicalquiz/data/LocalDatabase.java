@@ -12,18 +12,18 @@ public class LocalDatabase extends SQLiteOpenHelper {
     private static final String QUESTION_TABLE = "questions";
     private static final String TRANSLATION_TABLE = "translations";
 
-    private static final String TRANSLATION_ID = "translation_id";
-    private static final String QUESTION_ID = "question_id";
-    private static final String LANGUAGE_ID = "language_id";
-    private static final String DIFFICULTY_LEVEL = "difficulty";
-    private static final String TITLE = "title";
-    private static final String IMG = "image_location";
-    private static final String ANSWER_1 = "answer_1";
-    private static final String ANSWER_2 = "answer_2";
-    private static final String ANSWER_3 = "answer_3";
-    private static final String ANSWER_4 = "answer_4";
-    private static final String RIGHT_ANSWER = "right_answer";
-    private static final String WRONG_ANSWER_COMMENT = "wrong_answer_comment";
+    static final String TRANSLATION_ID = "translation_id";
+    static final String QUESTION_ID = "question_id";
+    static final String LANGUAGE_ID = "language_id";
+    static final String DIFFICULTY_LEVEL = "difficulty";
+    static final String TITLE = "title";
+    static final String IMG = "image_location";
+    static final String ANSWER_1 = "answer_1";
+    static final String ANSWER_2 = "answer_2";
+    static final String ANSWER_3 = "answer_3";
+    static final String ANSWER_4 = "answer_4";
+    static final String RIGHT_ANSWER = "right_answer";
+    static final String WRONG_ANSWER_COMMENT = "wrong_answer_comment";
 
     private Context mContext;
     private static LocalDatabase mInstance = null;

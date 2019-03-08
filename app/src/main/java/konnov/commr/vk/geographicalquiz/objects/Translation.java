@@ -97,14 +97,14 @@ public class Translation {
 
     @Override
     public String toString() {
-        return "questionId: " + questionId +
-                "translationId: " + translationId +
-                "title: " + title +
-                "imgLocation: " + imgLocation +
-                "answerOne: " + answerOne +
-                "answerTwo: " + answerTwo +
-                "answerThree: " + answerThree +
-                "answerFour: " + answerFour +
+        return "questionId: " + questionId + ", " +
+                "translationId: " + translationId + ", " +
+                "title: " + title + ", " +
+                "imgLocation: " + imgLocation + ", " +
+                "answerOne: " + answerOne + ", " +
+                "answerTwo: " + answerTwo + ", " +
+                "answerThree: " + answerThree + ", " +
+                "answerFour: " + answerFour + ", " +
                 "wrongAnswerComment: " + wrongAnswerComment;
     }
 }

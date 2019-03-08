@@ -37,8 +37,8 @@ public class Question {
 
     @Override
     public String toString() {
-        return "question id: " + questionId +
-                "difficulty: " + difficulty +
-                "right answer: " + rightAnswer;
+        return "question id: " + questionId + ", " +
+                " difficulty: " + difficulty + ", " +
+                " right answer: " + rightAnswer;
     }
 }
