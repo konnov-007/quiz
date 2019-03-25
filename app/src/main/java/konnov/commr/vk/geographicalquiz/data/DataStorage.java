@@ -2,15 +2,16 @@ package konnov.commr.vk.geographicalquiz.data;
 
 import java.util.HashMap;
 
+import konnov.commr.vk.geographicalquiz.data.source.local.LocalDatabase;
 import konnov.commr.vk.geographicalquiz.interfaces.Interfaces;
-import konnov.commr.vk.geographicalquiz.interfaces.WebService;
-import konnov.commr.vk.geographicalquiz.objects.Question;
-import konnov.commr.vk.geographicalquiz.objects.Translation;
+import konnov.commr.vk.geographicalquiz.data.pojo.Question;
+import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
 
 public class DataStorage  implements WebService {
     private static DataStorage mInstance = null;
-    HashMap<Integer, Question> questions;
-    HashMap<Integer, Translation> translations;
+    private HashMap<Integer, Question> questions;
+    private HashMap<Integer, Translation> translations;
+    LocalDatabase localDatabase = LocalDatabase.getInstance(null);
 
     public static DataStorage getInstance() {
         if (mInstance == null) {
@@ -27,10 +28,13 @@ public class DataStorage  implements WebService {
     @Override
     public void questionsReceived(HashMap<Integer, Question> questions) {
         this.questions = questions;
+        localDatabase.insertQuestions(questions);
     }
 
     @Override
     public void translationsReceived(HashMap<Integer, Translation> translations) {
         this.translations = translations;
+        localDatabase.insertTranslations(translations);
+        System.out.printf(localDatabase.getTranslations().toString());
     }
 }

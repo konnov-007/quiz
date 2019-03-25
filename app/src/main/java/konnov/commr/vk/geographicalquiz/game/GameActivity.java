@@ -1,19 +1,20 @@
-package konnov.commr.vk.geographicalquiz.activities;
+package konnov.commr.vk.geographicalquiz.game;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import konnov.commr.vk.geographicalquiz.Questions;
 import konnov.commr.vk.geographicalquiz.R;
+import konnov.commr.vk.geographicalquiz.levelselector.LevelSelectorActivity;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener{
     protected TextView question_text;
@@ -52,8 +53,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        //TODO Auto-generated method stub
-
         switch (v.getId()) {
             case R.id.answer1:
                 onClickAction(1);
@@ -116,7 +115,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        startActivity(new Intent(GameActivity.this, LevelSelector.class));
+                        startActivity(new Intent(GameActivity.this, LevelSelectorActivity.class));
                         finish();
                     }
                 })

@@ -10,9 +10,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import konnov.commr.vk.geographicalquiz.data.source.local.LocalDatabase;
 import konnov.commr.vk.geographicalquiz.interfaces.Interfaces;
-import konnov.commr.vk.geographicalquiz.objects.Question;
-import konnov.commr.vk.geographicalquiz.objects.Translation;
+import konnov.commr.vk.geographicalquiz.data.pojo.Question;
+import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
 
 public class UserRepository {
     private DatabaseReference mRootRefQuestions = FirebaseDatabase.getInstance().getReference("questions");

@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="konnov.commr.vk.geographicalquiz.activities.MainMenuActivity"
+    tools:context="konnov.commr.vk.geographicalquiz.mainmenu.MainMenuActivity"
     android:background="@drawable/background_earth"
     >
 
@@ -35,18 +35,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/exit_bttn_text"
-        android:onClick="exit"
-        android:background="@android:color/holo_blue_light"
-        android:layout_below="@+id/about_button"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp" />
-
 
 
 </RelativeLayout>

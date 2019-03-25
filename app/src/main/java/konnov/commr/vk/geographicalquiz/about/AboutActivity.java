@@ -1,13 +1,13 @@
-package konnov.commr.vk.geographicalquiz.activities;
+package konnov.commr.vk.geographicalquiz.about;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import konnov.commr.vk.geographicalquiz.about.AboutFragment;
-import konnov.commr.vk.geographicalquiz.activities.MainMenuActivity;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import konnov.commr.vk.geographicalquiz.mainmenu.MainMenuActivity;
 import konnov.commr.vk.geographicalquiz.R;
 
 public class AboutActivity extends AppCompatActivity {
@@ -16,7 +16,8 @@ public class AboutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         toolbar.setTitle(R.string.about_text);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);

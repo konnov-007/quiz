@@ -2,7 +2,6 @@ package konnov.commr.vk.geographicalquiz;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -12,7 +11,7 @@ import android.widget.Toast;
 /**
  * Created by Ilya on 04.10.2016.
  */
-public class Questions extends AppCompatActivity{
+public class Questions {
     private static Context context;
     private TextView question_text;
     private Button first_answer_button;

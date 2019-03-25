@@ -24,3 +24,25 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    // Sdk and tools
+    // Support library and architecture components support minSdk 14 and above.
+    minSdkVersion = 14
+    targetSdkVersion = 28
+    compileSdkVersion = 28
+
+    // App dependencies
+    androidXLegacySupport = '1.0.0'
+    appCompatVersion = '1.0.2'
+
+    firebaseDatabase = '16.1.0'
+    firebaseStorage = '16.1.0'
+    firebaseCore = '16.0.8'
+
+    guavaVersion = '27.0.1-android'
+    junitVersion = '4.12'
+    espressoVersion = '3.1.1'
+    roomVersion = '2.0.0'
+
+}

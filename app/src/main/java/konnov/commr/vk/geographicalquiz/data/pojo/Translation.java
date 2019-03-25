@@ -1,5 +1,5 @@
-package konnov.commr.vk.geographicalquiz.objects;
-
+package konnov.commr.vk.geographicalquiz.data.pojo;
+//TODO add room support
 public class Translation {
     private int questionId;
     private String translationId;

@@ -1,4 +1,4 @@
-package konnov.commr.vk.geographicalquiz.data;
+package konnov.commr.vk.geographicalquiz.data.source.local;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,8 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.HashMap;
 
-import konnov.commr.vk.geographicalquiz.objects.Question;
-import konnov.commr.vk.geographicalquiz.objects.Translation;
+import konnov.commr.vk.geographicalquiz.data.pojo.Question;
+import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
 
 
 public class LocalDatabase extends SQLiteOpenHelper {
@@ -19,18 +19,18 @@ public class LocalDatabase extends SQLiteOpenHelper {
     private static final String QUESTION_TABLE = "questions";
     private static final String TRANSLATION_TABLE = "translations";
 
-    static final String TRANSLATION_ID = "translation_id";
-    static final String QUESTION_ID = "question_id";
-    static final String LANGUAGE_ID = "language_id";
-    static final String DIFFICULTY_LEVEL = "difficulty";
-    static final String TITLE = "title";
-    static final String IMG = "image_location";
-    static final String ANSWER_1 = "answer_1";
-    static final String ANSWER_2 = "answer_2";
-    static final String ANSWER_3 = "answer_3";
-    static final String ANSWER_4 = "answer_4";
-    static final String RIGHT_ANSWER = "right_answer";
-    static final String WRONG_ANSWER_COMMENT = "wrong_answer_comment";
+    public static final String TRANSLATION_ID = "translation_id";
+    public static final String QUESTION_ID = "question_id";
+    public static final String LANGUAGE_ID = "language_id";
+    public static final String DIFFICULTY_LEVEL = "difficulty";
+    public static final String TITLE = "title";
+    public static final String IMG = "image_location";
+    public static final String ANSWER_1 = "answer_1";
+    public static final String ANSWER_2 = "answer_2";
+    public static final String ANSWER_3 = "answer_3";
+    public static final String ANSWER_4 = "answer_4";
+    public static final String RIGHT_ANSWER = "right_answer";
+    public static final String WRONG_ANSWER_COMMENT = "wrong_answer_comment";
 
     private Context mContext;
     private static LocalDatabase mInstance = null;

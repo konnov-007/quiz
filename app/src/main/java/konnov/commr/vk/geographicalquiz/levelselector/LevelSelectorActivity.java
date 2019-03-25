@@ -1,15 +1,18 @@
-package konnov.commr.vk.geographicalquiz.activities;
+package konnov.commr.vk.geographicalquiz.levelselector;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
 import konnov.commr.vk.geographicalquiz.R;
+import konnov.commr.vk.geographicalquiz.game.GameActivity;
+import konnov.commr.vk.geographicalquiz.mainmenu.MainMenuActivity;
 
-public class LevelSelector extends AppCompatActivity {
+public class LevelSelectorActivity extends AppCompatActivity {
 
     int level;
 
@@ -17,7 +20,8 @@ public class LevelSelector extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_selector);
-        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         toolbar.setTitle(R.string.select_level_in_selector_activity);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);

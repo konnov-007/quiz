@@ -1,11 +1,12 @@
-package konnov.commr.vk.geographicalquiz.activities;
+package konnov.commr.vk.geographicalquiz.game;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
 import konnov.commr.vk.geographicalquiz.R;
+import konnov.commr.vk.geographicalquiz.levelselector.LevelSelectorActivity;
 
 public class FinishGameActivity extends AppCompatActivity {
     TextView finishtext;
@@ -24,7 +25,7 @@ public class FinishGameActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        startActivity(new Intent(this, LevelSelector.class));
+        startActivity(new Intent(this, LevelSelectorActivity.class));
         finish();
     }
 

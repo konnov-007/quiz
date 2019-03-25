@@ -1,9 +1,9 @@
-package konnov.commr.vk.geographicalquiz.interfaces;
+package konnov.commr.vk.geographicalquiz.data;
 
 import java.util.HashMap;
 
-import konnov.commr.vk.geographicalquiz.objects.Question;
-import konnov.commr.vk.geographicalquiz.objects.Translation;
+import konnov.commr.vk.geographicalquiz.data.pojo.Question;
+import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
 
 public interface WebService {
     void questionsReceived(HashMap<Integer, Question> questions);
