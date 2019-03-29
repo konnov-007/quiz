@@ -6,7 +6,7 @@ import konnov.commr.vk.geographicalquiz.data.source.local.LocalDatabase;
 import konnov.commr.vk.geographicalquiz.interfaces.Interfaces;
 import konnov.commr.vk.geographicalquiz.data.pojo.Question;
 import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
-
+@Deprecated
 public class DataStorage  implements WebService {
     private static DataStorage mInstance = null;
     private HashMap<Integer, Question> questions;

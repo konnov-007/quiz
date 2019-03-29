@@ -6,6 +6,7 @@ import konnov.commr.vk.geographicalquiz.data.WebService;
 import konnov.commr.vk.geographicalquiz.data.pojo.Question;
 import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
 
+@Deprecated
 public class Interfaces {
     private HashMap<String, WebService> WebServiceRefMap = new HashMap<>();
 

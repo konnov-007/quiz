@@ -11,6 +11,7 @@ import android.widget.Toast;
 /**
  * Created by Ilya on 04.10.2016.
  */
+@Deprecated
 public class Questions {
     private static Context context;
     private TextView question_text;

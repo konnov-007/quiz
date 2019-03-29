@@ -1,45 +1,64 @@
-package konnov.commr.vk.geographicalquiz.data;
+package konnov.commr.vk.geographicalquiz.data.source.remote;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import android.util.SparseArray;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import konnov.commr.vk.geographicalquiz.data.source.local.LocalDatabase;
-import konnov.commr.vk.geographicalquiz.interfaces.Interfaces;
+import androidx.annotation.NonNull;
 import konnov.commr.vk.geographicalquiz.data.pojo.Question;
 import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
+import konnov.commr.vk.geographicalquiz.data.source.QuestionsDataSource;
+import konnov.commr.vk.geographicalquiz.data.source.local.LocalDatabase;
 
-public class UserRepository {
+public class QuestionsRemoteDataSource implements QuestionsDataSource {
+
+    private static QuestionsRemoteDataSource INSTANCE;
+
     private DatabaseReference mRootRefQuestions = FirebaseDatabase.getInstance().getReference("questions");
+
     private DatabaseReference mRootRefTranslations = FirebaseDatabase.getInstance().getReference("translations");
+
     private GenericTypeIndicator<ArrayList<Object>> objectsGTypeInd = new GenericTypeIndicator<ArrayList<Object>>() {};
-    private Interfaces interfaces = Interfaces.getInstance();
 
-    private static UserRepository mInstance = null;
-    public static UserRepository getInstance() {
-        if (mInstance == null) {
-            mInstance = new UserRepository();
+
+    private QuestionsRemoteDataSource() {}
+
+    public static QuestionsRemoteDataSource getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new QuestionsRemoteDataSource();
         }
-        return mInstance;
+        return INSTANCE;
     }
 
-    private UserRepository(){
-        startListeningToServer();
+    //TODO make the server side
+    @Override
+    public void getQuestions(@NonNull LoadQuestionsCallback callback) {
+        startListeningToServer(callback);
     }
 
-    private void startListeningToServer(){
+    @Override
+    public void refreshQuestions() {
+    // Not required because the {@link QuestionsRepository} handles the logic of refreshing the
+        // tasks from all the available data sources.
+    }
+
+
+    // TODO find a better solution
+    private void startListeningToServer(final LoadQuestionsCallback callback){
         mRootRefQuestions.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<Object> objectsList = dataSnapshot.getValue(objectsGTypeInd);
-                interfaces.reportQuestionsReceived(generateQuestionsMap(objectsList));
-                System.out.println(objectsList);
+                SparseArray<Question> questions = generateQuestionsMap(objectsList);
+                callback.onQuestionsLoaded(questions);
             }
 
             @Override
@@ -51,8 +70,8 @@ public class UserRepository {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<Object> objectsList = dataSnapshot.getValue(objectsGTypeInd);
-                interfaces.reportTranslationsReceived(generateTranslationsMap(objectsList));
-                System.out.println(objectsList);
+                SparseArray<Translation> translations = generateTranslationsMap(objectsList);
+                callback.onTranslationsLoaded(translations);
             }
 
             @Override
@@ -62,8 +81,8 @@ public class UserRepository {
         });
     }
 
-    private HashMap<Integer, Question> generateQuestionsMap(ArrayList<Object> objectList) {
-        HashMap<Integer, Question> questionsMap = new HashMap<>();
+    private SparseArray<Question> generateQuestionsMap(ArrayList<Object> objectList) {
+        SparseArray<Question> questionsMap = new SparseArray<>();
         for(Object object : objectList) {
             HashMap <String, Long> questionSet = (HashMap<String, Long>) object;
             long questionId = questionSet.get(LocalDatabase.QUESTION_ID);
@@ -75,8 +94,8 @@ public class UserRepository {
         return questionsMap;
     }
 
-    private HashMap<Integer, Translation> generateTranslationsMap(ArrayList<Object> objectList) {
-        HashMap<Integer, Translation> questionsMap = new HashMap<>();
+    private SparseArray<Translation> generateTranslationsMap(ArrayList<Object> objectList) {
+        SparseArray<Translation> questionsMap = new SparseArray<>();
         for(Object object : objectList) {
             HashMap <String, Object> questionSet = (HashMap<String, Object>) object;
             long questionId = (Long) questionSet.get(LocalDatabase.QUESTION_ID);

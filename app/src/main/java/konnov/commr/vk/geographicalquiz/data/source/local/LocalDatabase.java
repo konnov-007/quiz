@@ -11,7 +11,7 @@ import java.util.HashMap;
 import konnov.commr.vk.geographicalquiz.data.pojo.Question;
 import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
 
-
+@Deprecated
 public class LocalDatabase extends SQLiteOpenHelper {
     private static final int DB_VERSION = 1;
     private static final String DB_NAME = "questions_db";

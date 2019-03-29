@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import konnov.commr.vk.geographicalquiz.Injection;
 import konnov.commr.vk.geographicalquiz.R;
 import konnov.commr.vk.geographicalquiz.about.AboutActivity;
 import konnov.commr.vk.geographicalquiz.interfaces.Interfaces;
@@ -19,7 +20,7 @@ public class MainMenuActivity extends AppCompatActivity implements MainMenuContr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mPresenter = new MainMenuPresenter();
+        mPresenter = new MainMenuPresenter(Injection.provideQuestionsRepository(this));
         initUI();
     }
 
