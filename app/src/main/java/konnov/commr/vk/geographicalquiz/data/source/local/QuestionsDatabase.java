@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 import konnov.commr.vk.geographicalquiz.data.Entries;
 import konnov.commr.vk.geographicalquiz.data.pojo.Question;
 
-@Database(entities = {Question.class}, version = 1) //TODO add Translation.class
+@Database(entities = {Question.class}, version = 1, exportSchema = false) //TODO add Translation.class, exportSchema
 public abstract class QuestionsDatabase extends RoomDatabase {
 
     private static QuestionsDatabase INSTANCE;

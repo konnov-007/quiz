@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import konnov.commr.vk.geographicalquiz.Injection;
 import konnov.commr.vk.geographicalquiz.R;
 import konnov.commr.vk.geographicalquiz.about.AboutActivity;
-import konnov.commr.vk.geographicalquiz.interfaces.Interfaces;
 import konnov.commr.vk.geographicalquiz.levelselector.LevelSelectorActivity;
 
 public class MainMenuActivity extends AppCompatActivity implements MainMenuContract.View{
