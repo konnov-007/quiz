@@ -1,18 +1,64 @@
 package konnov.commr.vk.geographicalquiz.data.pojo;
-public class Translation {
+
+import android.os.Build;
+
+import java.util.Objects;
+
+import javax.annotation.Nullable;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import konnov.commr.vk.geographicalquiz.data.Entries;
+
+@Entity(tableName = Entries.TRANSLATION_TABLE)
+public final class Translation {
+
+    @PrimaryKey
+    @ColumnInfo(name = Entries.QUESTION_ID)
     private int questionId;
-    private String translationId;
+
+    @NonNull
+    @ColumnInfo(name = Entries.LANGUAGE_ID)
+    private String languageId;
+
+    @NonNull
+    @ColumnInfo(name = Entries.TITLE)
     private String title;
+
+    @Nullable
+    @ColumnInfo(name = Entries.IMG)
     private String imgLocation;
+
+    @NonNull
+    @ColumnInfo(name = Entries.ANSWER_1)
     private String answerOne;
+
+    @NonNull
+    @ColumnInfo(name = Entries.ANSWER_2)
     private String answerTwo;
+
+    @NonNull
+    @ColumnInfo(name = Entries.ANSWER_3)
     private String answerThree;
+
+    @NonNull
+    @ColumnInfo(name = Entries.ANSWER_4)
     private String answerFour;
+
+    @NonNull
+    @ColumnInfo(name = Entries.WRONG_ANSWER_COMMENT)
     private String wrongAnswerComment;
 
-    public Translation(int questionId, String translationId, String title, String imgLocation, String answerOne, String answerTwo, String answerThree, String answerFour, String wrongAnswerComment) {
+    public Translation(int questionId, @NonNull String languageId,
+                       @NonNull String title, @Nullable String imgLocation,
+                       @NonNull String answerOne, @NonNull String answerTwo,
+                       @NonNull String answerThree, @NonNull String answerFour,
+                       @NonNull String wrongAnswerComment) {
         this.questionId = questionId;
-        this.translationId = translationId;
+        this.languageId = languageId;
         this.title = title;
         this.imgLocation = imgLocation;
         this.answerOne = answerOne;
@@ -26,78 +72,51 @@ public class Translation {
         return questionId;
     }
 
-    public void setQuestionId(int questionId) {
-        this.questionId = questionId;
+    @NonNull
+    public String getLanguageId() {
+        return languageId;
     }
 
-    public String getTranslationId() {
-        return translationId;
-    }
-
-    public void setTranslationId(String translationId) {
-        this.translationId = translationId;
-    }
-
+    @NonNull
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
+    @Nullable
     public String getImgLocation() {
         return imgLocation;
     }
 
-    public void setImgLocation(String imgLocation) {
-        this.imgLocation = imgLocation;
-    }
-
+    @NonNull
     public String getAnswerOne() {
         return answerOne;
     }
 
-    public void setAnswerOne(String answerOne) {
-        this.answerOne = answerOne;
-    }
-
+    @NonNull
     public String getAnswerTwo() {
         return answerTwo;
     }
 
-    public void setAnswerTwo(String answerTwo) {
-        this.answerTwo = answerTwo;
-    }
-
+    @NonNull
     public String getAnswerThree() {
         return answerThree;
     }
 
-    public void setAnswerThree(String answerThree) {
-        this.answerThree = answerThree;
-    }
-
+    @NonNull
     public String getAnswerFour() {
         return answerFour;
     }
 
-    public void setAnswerFour(String answerFour) {
-        this.answerFour = answerFour;
-    }
-
+    @NonNull
     public String getWrongAnswerComment() {
         return wrongAnswerComment;
     }
 
-    public void setWrongAnswerComment(String wrongAnswerComment) {
-        this.wrongAnswerComment = wrongAnswerComment;
-    }
-
+    @NonNull
     @Override
     public String toString() {
         return "questionId: " + questionId + ", " +
-                "translationId: " + translationId + ", " +
+                "languageId: " + languageId + ", " +
                 "title: " + title + ", " +
                 "imgLocation: " + imgLocation + ", " +
                 "answerOne: " + answerOne + ", " +
@@ -105,5 +124,12 @@ public class Translation {
                 "answerThree: " + answerThree + ", " +
                 "answerFour: " + answerFour + ", " +
                 "wrongAnswerComment: " + wrongAnswerComment;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    public int hashCode() {
+        return questionId + Objects.hash(languageId, title, imgLocation, answerOne,
+                answerTwo, answerThree, answerFour);
     }
 }

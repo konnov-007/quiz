@@ -1,22 +1,21 @@
 package konnov.commr.vk.geographicalquiz.data.pojo;
 
-import com.google.common.base.Objects;
-
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import konnov.commr.vk.geographicalquiz.data.Entries;
 
-@Entity(tableName = "questions")
+@Entity(tableName = Entries.QUESTION_TABLE)
 public final class Question {
 
     @PrimaryKey
-    @ColumnInfo(name = "question_id")
+    @ColumnInfo(name = Entries.QUESTION_ID)
     private final int mQuestionId;
 
-    @ColumnInfo(name = "mDifficulty")
+    @ColumnInfo(name = Entries.DIFFICULTY)
     private final int mDifficulty;
 
-    @ColumnInfo(name = "right_answer")
+    @ColumnInfo(name = Entries.RIGHT_ANSWER)
     private final int mRightAnswer;
 
     public Question(int questionId, int difficulty, int rightAnswer) {
@@ -56,6 +55,6 @@ public final class Question {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(mQuestionId, mDifficulty, mRightAnswer); //TODO recheck if it's right
+        return mQuestionId + mDifficulty + mRightAnswer;
     }
 }

@@ -13,7 +13,6 @@ import konnov.commr.vk.geographicalquiz.interfaces.Interfaces;
 import konnov.commr.vk.geographicalquiz.levelselector.LevelSelectorActivity;
 
 public class MainMenuActivity extends AppCompatActivity implements MainMenuContract.View{
-//    private Interfaces interfaces = Interfaces.getInstance();
     private MainMenuPresenter mPresenter;
 
     @Override
@@ -43,8 +42,6 @@ public class MainMenuActivity extends AppCompatActivity implements MainMenuContr
             }
         });
     }
-
-
 
     @Override
     protected void onResume() {

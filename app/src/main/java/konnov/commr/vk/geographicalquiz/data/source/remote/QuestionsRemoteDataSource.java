@@ -16,7 +16,7 @@ import androidx.annotation.NonNull;
 import konnov.commr.vk.geographicalquiz.data.pojo.Question;
 import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
 import konnov.commr.vk.geographicalquiz.data.source.QuestionsDataSource;
-import konnov.commr.vk.geographicalquiz.data.source.local.LocalDatabase;
+import konnov.commr.vk.geographicalquiz.data.Entries;
 
 public class QuestionsRemoteDataSource implements QuestionsDataSource {
 
@@ -85,9 +85,9 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
         SparseArray<Question> questionsMap = new SparseArray<>();
         for(Object object : objectList) {
             HashMap <String, Long> questionSet = (HashMap<String, Long>) object;
-            long questionId = questionSet.get(LocalDatabase.QUESTION_ID);
-            long questionDifficulty = questionSet.get(LocalDatabase.DIFFICULTY_LEVEL);
-            long questionRightAnswer = questionSet.get(LocalDatabase.RIGHT_ANSWER);
+            long questionId = questionSet.get(Entries.QUESTION_ID);
+            long questionDifficulty = questionSet.get(Entries.DIFFICULTY);
+            long questionRightAnswer = questionSet.get(Entries.RIGHT_ANSWER);
             Question question = new Question((int) questionId, (int) questionDifficulty, (int) questionRightAnswer);
             questionsMap.put((int) questionId, question);
         }
@@ -98,15 +98,15 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
         SparseArray<Translation> questionsMap = new SparseArray<>();
         for(Object object : objectList) {
             HashMap <String, Object> questionSet = (HashMap<String, Object>) object;
-            long questionId = (Long) questionSet.get(LocalDatabase.QUESTION_ID);
-            String languageId = (String) questionSet.get(LocalDatabase.LANGUAGE_ID);
-            String title = (String) questionSet.get(LocalDatabase.TITLE);
-            String img = (String) questionSet.get(LocalDatabase.IMG);
-            String answerOne = (String) questionSet.get(LocalDatabase.ANSWER_1);
-            String answerTwo = (String) questionSet.get(LocalDatabase.ANSWER_2);
-            String answerThree = (String) questionSet.get(LocalDatabase.ANSWER_3);
-            String answerFour = (String) questionSet.get(LocalDatabase.ANSWER_4);
-            String wrongAnswerComment = (String) questionSet.get(LocalDatabase.WRONG_ANSWER_COMMENT);
+            long questionId = (Long) questionSet.get(Entries.QUESTION_ID);
+            String languageId = (String) questionSet.get(Entries.LANGUAGE_ID);
+            String title = (String) questionSet.get(Entries.TITLE);
+            String img = (String) questionSet.get(Entries.IMG);
+            String answerOne = (String) questionSet.get(Entries.ANSWER_1);
+            String answerTwo = (String) questionSet.get(Entries.ANSWER_2);
+            String answerThree = (String) questionSet.get(Entries.ANSWER_3);
+            String answerFour = (String) questionSet.get(Entries.ANSWER_4);
+            String wrongAnswerComment = (String) questionSet.get(Entries.WRONG_ANSWER_COMMENT);
             Translation translation = new Translation((int) questionId, languageId, title,
                     img, answerOne, answerTwo, answerThree, answerFour, wrongAnswerComment);
             questionsMap.put((int) questionId, translation);

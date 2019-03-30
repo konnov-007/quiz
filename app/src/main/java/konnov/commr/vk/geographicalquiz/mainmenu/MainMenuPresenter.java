@@ -15,6 +15,7 @@ public class MainMenuPresenter implements MainMenuContract.Presenter {
         mQuestionsRepository = questionsRepository;
     }
 
+    //Fetching questions from server or from room db when the first activity is run
     @Override
     public void fetchQuestions() {
         mQuestionsRepository.getQuestions(new QuestionsDataSource.LoadQuestionsCallback() {
