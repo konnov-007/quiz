@@ -38,10 +38,19 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
         return INSTANCE;
     }
 
-    //TODO make the server side
     @Override
     public void getQuestions(@NonNull LoadQuestionsCallback callback) {
-        startListeningToServer(callback);
+        getQuestionFromFirebase(callback);
+    }
+
+    @Override
+    public void saveQuestions(@NonNull SparseArray<Question> questions) {
+        ///there is no save question from user functionality
+    }
+
+    @Override
+    public void saveTranslation(@NonNull SparseArray<Translation> translations) {
+        ///there is no save question from user functionality
     }
 
     @Override
@@ -50,9 +59,13 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
         // tasks from all the available data sources.
     }
 
+    @Override
+    public void deleteAllQuestions() {
+        //we only delete questions from the local DB
+    }
 
-    // TODO find a better solution
-    private void startListeningToServer(final LoadQuestionsCallback callback){
+
+    private void getQuestionFromFirebase(final LoadQuestionsCallback callback){
         mRootRefQuestions.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -64,6 +77,7 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println("The read failed: " + databaseError.getCode());
+                callback.onDataNotAvailable();
             }
         });
         mRootRefTranslations.addValueEventListener(new ValueEventListener() {
@@ -77,6 +91,7 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println("The read failed: " + databaseError.getCode());
+                callback.onDataNotAvailable();
             }
         });
     }

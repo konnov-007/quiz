@@ -3,7 +3,7 @@ package konnov.commr.vk.geographicalquiz;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
-import konnov.commr.vk.geographicalquiz.data.QuestionsRepository;
+import konnov.commr.vk.geographicalquiz.data.source.QuestionsRepository;
 import konnov.commr.vk.geographicalquiz.data.source.QuestionsDataSource;
 import konnov.commr.vk.geographicalquiz.data.source.local.QuestionsDatabase;
 import konnov.commr.vk.geographicalquiz.data.source.local.QuestionsLocalDataSource;
@@ -21,6 +21,6 @@ public class Injection {
         QuestionsDatabase database = QuestionsDatabase.getInstance(context);
         return QuestionsRepository.getInstance(QuestionsRemoteDataSource.getInstance(),
                 QuestionsLocalDataSource.getInstance(new AppExecutors(),
-                        database.questionsDao()));
+                        database.questionsDao(), database.translationsDao()));
     }
 }

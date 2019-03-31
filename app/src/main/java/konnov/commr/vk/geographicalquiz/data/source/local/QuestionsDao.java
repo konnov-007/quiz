@@ -3,6 +3,8 @@ package konnov.commr.vk.geographicalquiz.data.source.local;
 import java.util.List;
 
 import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import konnov.commr.vk.geographicalquiz.data.Entries;
 import konnov.commr.vk.geographicalquiz.data.pojo.Question;
@@ -16,5 +18,7 @@ public interface QuestionsDao {
     @Query("DELETE FROM " + Entries.QUESTION_TABLE)
     void deleteQuestions();
 
-    //TODO insert questions and translations query
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertQuestion(Question question);
+
 }

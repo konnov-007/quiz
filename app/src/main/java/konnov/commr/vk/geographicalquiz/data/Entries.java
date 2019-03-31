@@ -3,6 +3,7 @@ package konnov.commr.vk.geographicalquiz.data;
 public class Entries {
 
     public static final String DB_NAME = "questions_db";
+    public static final int DB_VERSION = 1;
 
     public static final String QUESTION_TABLE = "questions";
     public static final String TRANSLATION_TABLE = "translations";

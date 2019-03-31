@@ -23,6 +23,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "com.google.android.material:material:$materialVersion"
+
     implementation "com.google.firebase:firebase-core:$rootProject.firebaseCore"
     implementation "com.google.firebase:firebase-database:$rootProject.firebaseDatabase"
     implementation "com.google.firebase:firebase-storage:$rootProject.firebaseStorage"

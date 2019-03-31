@@ -1,9 +1,8 @@
-package konnov.commr.vk.geographicalquiz.data;
+package konnov.commr.vk.geographicalquiz.data.source;
 
 import android.util.SparseArray;
 
 import androidx.annotation.NonNull;
-import konnov.commr.vk.geographicalquiz.data.source.QuestionsDataSource;
 import konnov.commr.vk.geographicalquiz.data.pojo.Question;
 import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
 
@@ -23,7 +22,7 @@ public class QuestionsRepository implements QuestionsDataSource{
      * Marks the cache as invalid, to force an update the next time data is requested. This variable
      * has package local visibility so it can be accessed from tests.
      */
-    boolean mCacheIsDirty = true; //TODO mCacheIsDirty = false
+    boolean mCacheIsDirty = false;
 
     private QuestionsRepository (@NonNull QuestionsDataSource questionsRemoteDataSource,
                                        @NonNull QuestionsDataSource questionsLocalDataSource) {
@@ -52,7 +51,7 @@ public class QuestionsRepository implements QuestionsDataSource{
      * get the data.
      */
     @Override
-    public void getQuestions(@NonNull LoadQuestionsCallback callback) {
+    public void getQuestions(@NonNull final LoadQuestionsCallback callback) {
         // Respond immediately with cache if available and not dirty
         if(mCachedQuestions != null && mCachedTranslations != null && !mCacheIsDirty) {
             callback.onQuestionsLoaded(mCachedQuestions);
@@ -62,27 +61,60 @@ public class QuestionsRepository implements QuestionsDataSource{
 
         if(mCacheIsDirty) {
             // If the cache is dirty we need to fetch new data from the network.
-            getTasksFromRemoteDataSource(callback);
+            getQuestionsFromRemoteDataSource(callback);
         } else {
-            // TODO Query the local storage if available. If not, query the network.
+            mQuestionsLocalDataSource.getQuestions(new LoadQuestionsCallback() {
+                @Override
+                public void onQuestionsLoaded(SparseArray<Question> questions) {
+                    if(questions.size() == 0) {
+                        onDataNotAvailable();
+                        return;
+                    }
+                    refreshCacheQuestions(questions);
+                    callback.onQuestionsLoaded(questions);
+                }
+
+                @Override
+                public void onTranslationsLoaded(SparseArray<Translation> translations) {
+                    if(translations.size() == 0) {
+                        return; //we already called onDataNotAvailable to fetch it from server above
+                    }
+                    refreshCacheTranslations(translations);
+                    callback.onTranslationsLoaded(translations);
+                }
+
+                @Override
+                public void onDataNotAvailable() {
+                    getQuestionsFromRemoteDataSource(callback);
+                }
+            });
         }
     }
 
+    @Override
+    public void saveQuestions(@NonNull SparseArray<Question> questions) {
+        mQuestionsLocalDataSource.saveQuestions(questions);
+    }
+
+    @Override
+    public void saveTranslation(@NonNull SparseArray<Translation> translations) {
+        mQuestionsLocalDataSource.saveTranslation(translations);
+    }
 
 
-    private void getTasksFromRemoteDataSource(@NonNull final LoadQuestionsCallback callback) {
+    private void getQuestionsFromRemoteDataSource(@NonNull final LoadQuestionsCallback callback) {
         mQuestionsRemoteDataSource.getQuestions(new LoadQuestionsCallback() {
             @Override
             public void onQuestionsLoaded(SparseArray<Question> questions) {
                 refreshCacheQuestions(questions);
-                //TODO refreshLocalDataSource(questions);
+                refreshQuestionsTable(questions);
                 callback.onQuestionsLoaded(questions);
             }
 
             @Override
             public void onTranslationsLoaded(SparseArray<Translation> translations) {
                 refreshCacheTranslations(translations);
-                //TODO refreshLocalDataSource(questions);
+                refreshTranslationsTable(translations);
                 callback.onTranslationsLoaded(translations);
             }
 
@@ -115,8 +147,28 @@ public class QuestionsRepository implements QuestionsDataSource{
         mCacheIsDirty = false;
     }
 
+    private void refreshQuestionsTable(SparseArray<Question> questions){
+        mQuestionsLocalDataSource.deleteAllQuestions();
+        mQuestionsLocalDataSource.saveQuestions(questions);
+    }
+
+    private void refreshTranslationsTable(SparseArray<Translation> translations){
+       mQuestionsLocalDataSource.saveTranslation(translations);
+    }
+
     @Override
     public void refreshQuestions() {
         mCacheIsDirty = true;
+    }
+
+    @Override
+    public void deleteAllQuestions() {
+        mQuestionsLocalDataSource.deleteAllQuestions();
+        if(mCachedQuestions == null) {
+            mCachedQuestions = new SparseArray<>();
+        }
+        if(mCachedTranslations == null) {
+            mCachedTranslations = new SparseArray<>();
+        }
     }
 }

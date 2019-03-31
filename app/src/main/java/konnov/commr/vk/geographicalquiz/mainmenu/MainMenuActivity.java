@@ -10,10 +10,11 @@ import konnov.commr.vk.geographicalquiz.Injection;
 import konnov.commr.vk.geographicalquiz.R;
 import konnov.commr.vk.geographicalquiz.about.AboutActivity;
 import konnov.commr.vk.geographicalquiz.levelselector.LevelSelectorActivity;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainMenuActivity extends AppCompatActivity implements MainMenuContract.View{
     private MainMenuPresenter mPresenter;
-
+    //TODO add update database button
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,8 +62,12 @@ public class MainMenuActivity extends AppCompatActivity implements MainMenuContr
     }
 
     @Override
-    public void showErrorMessage() {
-        //todo error message if no internet connection
+    public void showLoadingQuestionsError() {
+        showMessage(getString(R.string.network_error));
+    }
+
+    private void showMessage(String message) {
+        Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).show();
     }
 
     @Override

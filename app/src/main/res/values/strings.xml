@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">Geo quiz</string>
+
+    //MainMenuActivity
     <string name="new_game_bttn_text">Play</string>
     <string name="setting_bttn_text">Setting</string>
     <string name="about_text">About</string>
     <string name="exit_bttn_text">Exit</string>
+    <string name="network_error">Check your internet connection</string>
 
     <string name="select_level_in_selector_activity">Select the level</string>
     <string name="about_no_email">There are no mail apps</string>

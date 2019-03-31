@@ -7,13 +7,15 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import konnov.commr.vk.geographicalquiz.data.Entries;
 import konnov.commr.vk.geographicalquiz.data.pojo.Question;
+import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
 
-@Database(entities = {Question.class}, version = 1, exportSchema = false) //TODO add Translation.class, exportSchema
+@Database(entities = {Question.class, Translation.class}, version = Entries.DB_VERSION, exportSchema = false)
 public abstract class QuestionsDatabase extends RoomDatabase {
 
     private static QuestionsDatabase INSTANCE;
 
     public abstract QuestionsDao questionsDao();
+    public abstract TranslationsDao translationsDao();
 
     private static final Object sLock = new Object();
 

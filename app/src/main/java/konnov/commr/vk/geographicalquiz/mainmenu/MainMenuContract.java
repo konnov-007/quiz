@@ -7,7 +7,7 @@ public interface MainMenuContract {
 
     interface View extends BaseView<Presenter> {
         void initUI();
-        void showErrorMessage();
+        void showLoadingQuestionsError();
         void startNewGame();
         void startAbout();
     }
