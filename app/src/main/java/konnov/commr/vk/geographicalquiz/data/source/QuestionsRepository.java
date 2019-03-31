@@ -66,19 +66,12 @@ public class QuestionsRepository implements QuestionsDataSource{
             mQuestionsLocalDataSource.getQuestions(new LoadQuestionsCallback() {
                 @Override
                 public void onQuestionsLoaded(SparseArray<Question> questions) {
-                    if(questions.size() == 0) {
-                        onDataNotAvailable();
-                        return;
-                    }
                     refreshCacheQuestions(questions);
                     callback.onQuestionsLoaded(questions);
                 }
 
                 @Override
                 public void onTranslationsLoaded(SparseArray<Translation> translations) {
-                    if(translations.size() == 0) {
-                        return; //we already called onDataNotAvailable to fetch it from server above
-                    }
                     refreshCacheTranslations(translations);
                     callback.onTranslationsLoaded(translations);
                 }

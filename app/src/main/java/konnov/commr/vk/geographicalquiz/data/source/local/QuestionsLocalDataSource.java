@@ -50,9 +50,12 @@ public class QuestionsLocalDataSource implements QuestionsDataSource {
                 mAppExecutors.mainThread().execute(new Runnable() {
                     @Override
                     public void run() {
-                        if(translationsList != null && questionsList != null) {
+                        if(translationsList != null && questionsList != null &&
+                                translationsList.size() != 0 && questionsList.size() != 0) {
                             callback.onQuestionsLoaded(Misc.questionListToSparseArray(questionsList));
                             callback.onTranslationsLoaded(Misc.translationListToSparseArray(translationsList));
+                        } else {
+                            callback.onDataNotAvailable();
                         }
                     }
                 });

@@ -17,15 +17,6 @@ public interface QuestionsDataSource {
         void onDataNotAvailable();
     }
 
-    interface GetQuestionsCallback {
-
-        void onQuestionsLoaded(SparseArray<Question> questions);
-
-        void onTranslationsLoaded(SparseArray<Translation> translations);
-
-        void onDataNotAvailable();
-    }
-
     void getQuestions(@NonNull LoadQuestionsCallback callback);
 
     void saveQuestions(@NonNull SparseArray<Question> questions);
