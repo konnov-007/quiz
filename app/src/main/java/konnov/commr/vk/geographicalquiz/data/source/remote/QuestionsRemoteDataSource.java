@@ -66,7 +66,7 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
 
 
     private void getQuestionFromFirebase(final LoadQuestionsCallback callback){
-        mRootRefQuestions.addValueEventListener(new ValueEventListener() {
+        mRootRefQuestions.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<Object> objectsList = dataSnapshot.getValue(objectsGTypeInd);
@@ -80,7 +80,8 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
                 callback.onDataNotAvailable();
             }
         });
-        mRootRefTranslations.addValueEventListener(new ValueEventListener() {
+
+        mRootRefTranslations.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ArrayList<Object> objectsList = dataSnapshot.getValue(objectsGTypeInd);

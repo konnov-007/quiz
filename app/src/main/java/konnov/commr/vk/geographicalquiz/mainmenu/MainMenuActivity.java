@@ -14,7 +14,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class MainMenuActivity extends AppCompatActivity implements MainMenuContract.View{
     private MainMenuPresenter mPresenter;
-    //TODO add update database button
+    //todo progress dialog of fetching server data
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +23,7 @@ public class MainMenuActivity extends AppCompatActivity implements MainMenuContr
         initUI();
     }
 
-    @Override
-    public void initUI() {
+    private void initUI() {
         mPresenter.fetchQuestions();
         Button newGameButton = findViewById(R.id.new_game_button);
         newGameButton.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +38,14 @@ public class MainMenuActivity extends AppCompatActivity implements MainMenuContr
             @Override
             public void onClick(View view) {
                 startAbout();
+            }
+        });
+
+        Button updateButton = findViewById(R.id.update_db_button);
+        updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateDB();
             }
         });
     }
@@ -80,5 +87,10 @@ public class MainMenuActivity extends AppCompatActivity implements MainMenuContr
     public void startAbout() {
         Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void updateDB() {
+        mPresenter.updateQuestions();
     }
 }

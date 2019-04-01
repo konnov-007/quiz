@@ -41,6 +41,12 @@ public class MainMenuPresenter implements MainMenuContract.Presenter {
     }
 
     @Override
+    public void updateQuestions() {
+        mQuestionsRepository.refreshQuestions();
+        fetchQuestions();
+    }
+
+    @Override
     public void takeView(MainMenuContract.View view) {
         mView = view;
     }

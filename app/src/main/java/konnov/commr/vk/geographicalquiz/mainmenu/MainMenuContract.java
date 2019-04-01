@@ -6,13 +6,14 @@ import konnov.commr.vk.geographicalquiz.BaseView;
 public interface MainMenuContract {
 
     interface View extends BaseView<Presenter> {
-        void initUI();
         void showLoadingQuestionsError();
         void startNewGame();
         void startAbout();
+        void updateDB();
     }
 
     interface Presenter extends BasePresenter<View> {
         void fetchQuestions();
+        void updateQuestions();
     }
 }
