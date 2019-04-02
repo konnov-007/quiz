@@ -18,42 +18,32 @@
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <Button
-        android:text="@string/level_one_button"
-        android:layout_gravity="center"
+        android:id="@+id/easy_level_button"
         android:layout_width="320dp"
-        android:id="@+id/button"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="70dp"
         android:background="@android:color/holo_red_light"
-        android:onClick="startQuestions" />
+        android:onClick="startQuestions"
+        android:text="@string/level_one_button" />
 
     <Button
-        android:text="@string/level_two_button"
-        android:layout_gravity="center"
+        android:id="@+id/medium_level_button"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:id="@+id/button2"
+        android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:background="@android:color/holo_red_light"
-        android:onClick="startQuestions" />
+        android:onClick="startQuestions"
+        android:text="@string/level_two_button" />
 
     <Button
-        android:text="@string/level_three_button"
-        android:layout_gravity="center"
+        android:id="@+id/difficult_level_button"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:id="@+id/button3"
-        android:background="@android:color/holo_red_light"
-        android:layout_marginTop="10dp"
-        android:onClick="startQuestions" />
-
-    <Button
-        android:text="@string/level_four_button"
         android:layout_gravity="center"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/button4"
         android:layout_marginTop="10dp"
         android:background="@android:color/holo_red_light"
-        android:onClick="startQuestions" />
+        android:onClick="startQuestions"
+        android:text="@string/level_four_button" />
 </LinearLayout>

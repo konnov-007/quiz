@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,42 +12,47 @@ import konnov.commr.vk.geographicalquiz.R;
 import konnov.commr.vk.geographicalquiz.game.GameActivity;
 import konnov.commr.vk.geographicalquiz.mainmenu.MainMenuActivity;
 
-public class LevelSelectorActivity extends AppCompatActivity {
+public class LevelSelectorActivity extends AppCompatActivity implements  LevelSelectorContract.View{
 
-    int level;
+    private LevelSelectorContract.Presenter mPresenter = new LevelSelectorPresenter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_selector);
+        initUI();
+    }
+
+    private void initUI(){
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(R.string.select_level_in_selector_activity);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
-        if(getSupportActionBar() != null)
+        if(getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
     }
 
-    public void startQuestions(android.view.View v) {
+    @Override
+    public void startQuestions(View v) {
         Intent intent = new Intent(this, GameActivity.class);
+
         switch (v.getId()) {
-            case R.id.button:
-                level = 1; //TODO - 0
+            case R.id.easy_level_button:
+                int level = 0;
                 intent.putExtra("level", level);
                 startActivity(intent);
                 break;
-            case R.id.button2:
-                Toast.makeText(this, "level 2", Toast.LENGTH_SHORT).show();
+            case R.id.medium_level_button: //TODO implement other difficulties
+                level = 1;
+//                intent.putExtra("level 2", level);
+//                startActivity(intent);
                 break;
-            case R.id.button3:
-                level = 3;
-                intent.putExtra("level", level); //TODO - DELETE
-                startActivity(intent);
-                break;
-            case R.id.button4:
-                Toast.makeText(this, "level 4", Toast.LENGTH_SHORT).show();
+            case R.id.difficult_level_button:
+//                level = 2;
+//                Toast.makeText(this, "level 4", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
@@ -69,9 +74,15 @@ public class LevelSelectorActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        mPresenter.takeView(this);
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
-        finish();
+        mPresenter.dropView();
     }
 
 }
