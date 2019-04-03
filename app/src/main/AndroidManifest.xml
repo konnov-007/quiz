@@ -21,7 +21,7 @@
             android:name=".game.GameActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".game.FinishGameActivity"
+            android:name=".gamefinish.FinishGameActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".levelselector.LevelSelectorActivity"

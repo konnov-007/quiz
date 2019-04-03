@@ -1,4 +1,4 @@
-package konnov.commr.vk.geographicalquiz.game;
+package konnov.commr.vk.geographicalquiz.gamefinish;
 
 import android.content.Intent;
 import android.os.Bundle;

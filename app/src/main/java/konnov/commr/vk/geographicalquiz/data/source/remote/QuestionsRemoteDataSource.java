@@ -63,7 +63,7 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
     public void deleteAllQuestions() {
         //we only delete questions from the local DB
     }
-
+//todo execute in a different process
 
     private void getQuestionFromFirebase(final LoadQuestionsCallback callback){
         mRootRefQuestions.addListenerForSingleValueEvent(new ValueEventListener() {
