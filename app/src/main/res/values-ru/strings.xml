@@ -9,6 +9,7 @@
     <string name="exit_btn_text">Выход</string>
     <string name="update_db">Обновить данные</string>
     <string name="network_error">Проверьте подключение к интернету</string>
+    <string name="network_success">База данных обновлена</string>
 
     <!--LevelSelectorActivity.java-->
     <string name="select_level_in_selector_activity">Выберите уровень</string>

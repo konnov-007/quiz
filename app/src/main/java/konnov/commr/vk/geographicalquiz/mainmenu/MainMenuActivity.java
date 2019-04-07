@@ -18,7 +18,7 @@ public class MainMenuActivity extends AppCompatActivity implements MainMenuContr
 
     private MainMenuPresenter mPresenter;
 
-    //todo progress dialog of fetching server data
+    //todo maybe make a progress dialog of fetching server data
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +29,6 @@ public class MainMenuActivity extends AppCompatActivity implements MainMenuContr
     }
 
     private void initUI() {
-        mPresenter.fetchQuestions();
-
         Toolbar toolbar = findViewById(R.id.main_menu_toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(Color.WHITE);
@@ -64,6 +62,7 @@ public class MainMenuActivity extends AppCompatActivity implements MainMenuContr
     protected void onResume() {
         super.onResume();
         mPresenter.takeView(this);
+        mPresenter.fetchQuestions();
     }
 
     @Override
@@ -81,6 +80,11 @@ public class MainMenuActivity extends AppCompatActivity implements MainMenuContr
     @Override
     public void showLoadingQuestionsError() {
         showMessage(getString(R.string.network_error));
+    }
+
+    @Override
+    public void showUpdatingQuestionsSuccess() {
+        showMessage(getString(R.string.network_success));
     }
 
     private void showMessage(String message) {

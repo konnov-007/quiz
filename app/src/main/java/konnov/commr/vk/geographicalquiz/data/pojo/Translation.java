@@ -15,7 +15,7 @@ import konnov.commr.vk.geographicalquiz.data.Entries;
 
 @Entity(tableName = Entries.TRANSLATION_TABLE)
 public final class Translation {
-
+//TODO generate primary key for translation with UUID.randomUUID().toString() in order to store translations of different languages in one DB
     @PrimaryKey
     @ColumnInfo(name = Entries.QUESTION_ID)
     private int questionId;
