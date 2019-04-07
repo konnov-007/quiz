@@ -25,12 +25,12 @@ public class MainMenuPresenter implements MainMenuContract.Presenter {
         mQuestionsRepository.getQuestions(new QuestionsDataSource.LoadQuestionsCallback() {
             @Override
             public void onQuestionsLoaded(SparseArray<Question> questions) {
-                System.out.println("Questions received : " + questions);
+                System.out.println("Questions received, size: " + questions.size() + ", data: "  + questions);
             }
 
             @Override
             public void onTranslationsLoaded(SparseArray<Translation> translations) {
-                System.out.println("Translations received : " + translations);
+                System.out.println("Translations received, size: " + translations.size() + ", data: " + translations);
             }
 
             @Override

@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +25,7 @@ public class LevelSelectorActivity extends AppCompatActivity implements  LevelSe
     }
 
     private void initUI(){
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.level_selector_toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(R.string.select_level_in_selector_activity);
         toolbar.setTitleTextColor(Color.WHITE);
@@ -43,14 +44,17 @@ public class LevelSelectorActivity extends AppCompatActivity implements  LevelSe
             case R.id.easy_level_button:
                 int level = 0;
                 intent.putExtra("level", level);
+                Toast.makeText(this, "Пока сделано только несколько вопросов", Toast.LENGTH_LONG).show();
                 startActivity(intent);
                 break;
             case R.id.medium_level_button: //TODO implement other difficulties
                 level = 1;
+                Toast.makeText(this, "Not made yet", Toast.LENGTH_SHORT).show();
 //                intent.putExtra("level 2", level);
 //                startActivity(intent);
                 break;
             case R.id.difficult_level_button:
+                Toast.makeText(this, "Not made yet", Toast.LENGTH_SHORT).show();
 //                level = 2;
 //                Toast.makeText(this, "level 4", Toast.LENGTH_SHORT).show();
                 break;

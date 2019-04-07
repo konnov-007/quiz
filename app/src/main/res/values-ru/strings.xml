@@ -2,69 +2,33 @@
 <resources>
     <string name="app_name">Викторина по географии</string>
 
-    //MainMenuActivity
-    <string name="new_game_bttn_text">Игра</string>
-    <string name="setting_bttn_text">Настройки</string>
+    <!--MainMenuActivity.java-->
+    <string name="new_game_btn_text">Игра</string>
+    <string name="setting_btn_text">Настройки</string>
     <string name="about_text">О игре</string>
-    <string name="exit_bttn_text">Выход</string>
+    <string name="exit_btn_text">Выход</string>
     <string name="update_db">Обновить данные</string>
     <string name="network_error">Проверьте подключение к интернету</string>
 
+    <!--LevelSelectorActivity.java-->
     <string name="select_level_in_selector_activity">Выберите уровень</string>
-    <string name="about_no_email">Нет почтовых приложений для отправки</string>
+    <string name="easy_btn_text">Уровень 1 (простой)</string>
+    <string name="medium_btn_text">Уровень 2 (средний)</string>
+    <string name="hard_btn_text">Уровень 3 (невозможный)</string>
 
+    <!--GameActivity.java-->
     <string name="right_answer">Правильно!</string>
-
-
-    <string name="back_to_main_menu_alert_title">Слился, петух?</string>
+    <string name="back_to_main_menu_alert_title">Слился?</string>
     <string name="back_to_main_menu_alert_message">Вы уверены, что вы хотите вернуться в главное меню?</string>
-    <string name="level_one_button">Уровень 1 (простой)</string>
-    <string name="level_two_button">Уровень 2 (средний)</string>
-    <string name="level_three_button">Уровень 3 (тяжелый)</string>
-    <string name="level_four_button">Уровень 4 (невозможный)</string>
+
+    <!--FinishGameActivity.java-->
     <string name="congrats">Поздравляем!! Ваш счет: %1$d</string>
 
-
+    <!--AboutActivity.java-->
+    <string name="about_no_email">Нет почтовых приложений для отправки</string>
     <string name="preference_version_text">Версия</string>
     <string name="preference_support_text">Поддержать разработчика</string>
     <string name="preference_rate_text">Поставить оценку</string>
     <string name="preference_feedback_text">Отправить отчет</string>
     <string name="preference_vk_text">Связаться на VK</string>
-
-
-    <string name="level_3_question_1">Какой язык является национальным в Кении?</string>
-    <string name="level_3_question_1_answer_1">Африкаанс</string>
-    <string name="level_3_question_1_answer_2">Кенийский</string>
-    <string name="level_3_question_1_answer_3">Суахили</string>
-    <string name="level_3_question_1_answer_4">Арабский</string>
-    <string name="level_3_question_1_answer_wrong">Неправильно! Национальный язык Кении - Суахили</string>
-
-    <string name="level_3_question_2">Какой город является столицей Австралии?</string>
-    <string name="level_3_question_2_answer_1">Сидней</string>
-    <string name="level_3_question_2_answer_2">Канберра</string>
-    <string name="level_3_question_2_answer_3">Мельбурн</string>
-    <string name="level_3_question_2_answer_4">Перт</string>
-    <string name="level_3_question_2_answer_wrong">Неа, столица Австралии - Канберра</string>
-
-    <string name="level_3_question_3">Какая страна изображена на карте?</string>
-    <string name="level_3_question_3_answer_1">Колумбия</string>
-    <string name="level_3_question_3_answer_2">Эквадор</string>
-    <string name="level_3_question_3_answer_3">Гайана</string>
-    <string name="level_3_question_3_answer_4">Венесуэла</string>
-    <string name="level_3_question_3_answer_wrong">Мда, это Венесуэла, дибил</string>
-
 </resources>
-
-
-
-
-
-
-
-
-    <!--    <string name="level_3_question_4">Самое высокое здание в мире?</string>
-        <string name="level_3_question_4_answer_1">Бурдж-Халифа</string>
-        <string name="level_3_question_4_answer_2">Эмпаер-стейт-билдинг</string>
-        <string name="level_3_question_4_answer_3">Всемирный торговый центр </string>
-        <string name="level_3_question_4_answer_4">Шанхайская башня</string>
-        <string name="level_3_question_4_answer_wrong">Найн, правильный ответ - Бурдж-Халифа</string> -->

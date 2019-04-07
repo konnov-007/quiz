@@ -1,202 +1,36 @@
 <resources>
     <string name="app_name">Geo quiz</string>
 
-    //MainMenuActivity
-    <string name="new_game_bttn_text">Play</string>
-    <string name="setting_bttn_text">Setting</string>
+    <!--MainMenuActivity.java-->
+    <string name="new_game_btn_text">Play</string>
+    <string name="setting_btn_text">Setting</string>
     <string name="about_text">About</string>
-    <string name="exit_bttn_text">Exit</string>
+    <string name="exit_btn_text">Exit</string>
     <string name="update_db">Update database</string>
     <string name="network_error">Check your internet connection</string>
 
+    <!--LevelSelectorActivity.java-->
     <string name="select_level_in_selector_activity">Select the level</string>
-    <string name="about_no_email">There are no mail apps</string>
+    <string name="easy_btn_text">Level 1 (easy)</string>
+    <string name="medium_btn_text">Level 2 (medium)</string>
+    <string name="hard_btn_text">Level 3 (impossible)</string>
 
+    <!--GameActivity.java-->
     <string name="right_answer">Right!</string>
-
     <string name="back_to_main_menu_alert_title">Give up?</string>
     <string name="back_to_main_menu_alert_message">Are you sure you want to go to main menu?</string>
-    <string name="level_one_button">Level 1 (easy)</string>
-    <string name="level_two_button">Level 2 (medium)</string>
-    <string name="level_three_button">Level 3 (difficult)</string>
-    <string name="level_four_button">Level 4 (impossible)</string>
+
+    <!--FinishGameActivity.java-->
     <string name="congrats">Congratulations! Your score is %1$d</string>
 
+    <!--AboutActivity.java-->
     <string name="preference_version_text">Version</string>
     <string name="preference_support_text">Support the developer</string>
     <string name="preference_rate_text">Rate this app</string>
     <string name="preference_feedback_text">Send feedback</string>
     <string name="preference_vk_text">Contact me via vk</string>
+    <string name="about_no_email">There are no mail apps</string>
 
-
-
-
-
-
-    <string name="level_1_question_1">The smallest continent</string>  <!--question_id: 0-->
-    <string name="level_1_question_1_answer_1">Europe</string>
-    <string name="level_1_question_1_answer_2">Australia</string>
-    <string name="level_1_question_1_answer_3">North America</string>
-    <string name="level_1_question_1_answer_4">Africa</string>
-    <string name="level_1_question_1_answer_wrong">It\'s Australia (8 600 000 km²)</string>
-
-    <string name="level_1_question_2">The most populated country in the world</string> <!--question_id: 1-->
-    <string name="level_1_question_2_answer_1">India</string>
-    <string name="level_1_question_2_answer_2">United States</string>
-    <string name="level_1_question_2_answer_3">Russia</string>
-    <string name="level_1_question_2_answer_4">China</string>
-    <string name="level_1_question_2_answer_wrong">China has the hugest number of citizens. There are more than 1.3 billion who live in China</string>
-
-    <string name="level_1_question_3">The biggest country by area</string>
-    <string name="level_1_question_3_answer_1">China</string>
-    <string name="level_1_question_3_answer_2">Russia</string>
-    <string name="level_1_question_3_answer_3">United States</string>
-    <string name="level_1_question_3_answer_4">Canada</string>
-    <string name="level_1_question_3_answer_wrong">Russia is the correct one (17 100 000 km²)</string>
-
-    <string name="level_1_question_4">What\'s the highest building in the world?</string>
-    <string name="level_1_question_4_answer_1">Burj Khalifa</string>
-    <string name="level_1_question_4_answer_2">Empire State &#10;Building</string>
-    <string name="level_1_question_4_answer_3">One World &#10;Trade Center</string>
-    <string name="level_1_question_4_answer_4">Shanghai Tower</string>
-    <string name="level_1_question_4_answer_wrong">Nein, the correct answer is Burj Khalifa (828m)</string>
-
-    <string name="level_1_question_5">Flag of the country</string>
-    <string name="level_1_question_5_answer_1">Italy</string>
-    <string name="level_1_question_5_answer_2">Romania</string>
-    <string name="level_1_question_5_answer_3">Bulgaria</string>
-    <string name="level_1_question_5_answer_4">Slovakia</string>
-    <string name="level_1_question_5_answer_wrong">This is the flag of Italy</string>
-
-    <string name="level_1_question_6">The highest mountains in the world</string>
-    <string name="level_1_question_6_answer_1">Aconcagua</string>
-    <string name="level_1_question_6_answer_2">Caucasus mountains</string>
-    <string name="level_1_question_6_answer_3">Chogori</string>
-    <string name="level_1_question_6_answer_4">Everest</string>
-    <string name="level_1_question_6_answer_wrong">The correct answer is Everest (8,848m)</string>
-
-    <string name="level_1_question_7">Which country isn\'t a part of the UK</string>
-    <string name="level_1_question_7_answer_1">Wales</string>
-    <string name="level_1_question_7_answer_2">Scotland</string>
-    <string name="level_1_question_7_answer_3">Ireland</string>
-    <string name="level_1_question_7_answer_4">Northern Ireland</string>
-    <string name="level_1_question_7_answer_wrong">The republic of Ireland is a separated country</string>
-
-    <string name="level_1_question_8">The country on the map</string>
-    <string name="level_1_question_8_answer_1">The Netherlands</string>
-    <string name="level_1_question_8_answer_2">Germany</string>
-    <string name="level_1_question_8_answer_3">France</string>
-    <string name="level_1_question_8_answer_4">Denmark</string>
-    <string name="level_1_question_8_answer_wrong">It\'s Germany</string>
-
-    <string name="level_1_question_9">The first country by GDP (nominal)?</string>
-    <string name="level_1_question_9_answer_1">Germany</string>
-    <string name="level_1_question_9_answer_2">China</string>
-    <string name="level_1_question_9_answer_3">The US</string>
-    <string name="level_1_question_9_answer_4">Japan</string>
-    <string name="level_1_question_9_answer_wrong">The US is far ahead the rest of the countries (18 trillion USD)</string>
-
-    <string name="level_1_question_10">Brazil used to be a colony of</string>
-    <string name="level_1_question_10_answer_1">France</string>
-    <string name="level_1_question_10_answer_2">Spain</string>
-    <string name="level_1_question_10_answer_3">Portugal</string>
-    <string name="level_1_question_10_answer_4">UK</string>
-    <string name="level_1_question_10_answer_wrong">It was a Portuguese colony</string>
-
-
-
-
-    <string name="level_2_question_1">The biggest country in Central America</string>
-    <string name="level_2_question_1_answer_1">Brazil</string>
-    <string name="level_2_question_1_answer_2">Mexico</string>
-    <string name="level_2_question_1_answer_3">Argentina</string>
-    <string name="level_2_question_1_answer_4">Panama</string>
-    <string name="level_2_question_1_answer_wrong">The biggest country is Mexico out there. Brazil and Argentina isn\'t situated in Central American region. Panama has pretty small area</string>
-
-    <string name="level_2_question_2">Is Turkey Geographically located in Europe?</string>
-    <string name="level_2_question_2_answer_1">Entirely in&#10; Europe</string>
-    <string name="level_2_question_2_answer_2">Particularly in&#10;Europe</string>
-    <string name="level_2_question_2_answer_3">Not at all</string>
-    <string name="level_2_question_2_answer_4">The location&#10;is undefined</string>
-
-    <string name="level_2_question_3">The religion of Japan</string>
-    <string name="level_2_question_3_answer_1">Shintoism</string>
-    <string name="level_2_question_3_answer_2">Buddhism</string>
-    <string name="level_2_question_3_answer_3">Christianity</string>
-    <string name="level_2_question_3_answer_4">Taoism</string>
-
-
-
-    <string name="level_3_question_1">What is the national language of Kenya?</string>
-    <string name="level_3_question_1_answer_1">Afrikaans</string>
-    <string name="level_3_question_1_answer_2">Kenyan</string>
-    <string name="level_3_question_1_answer_3">Kiswahili</string>
-    <string name="level_3_question_1_answer_4">Arabic</string>
-    <string name="level_3_question_1_answer_wrong">Wrong! The language of Kenya is Kiswahili</string>
-
-    <string name="level_3_question_2">What is the capital of Australia?</string>
-    <string name="level_3_question_2_answer_1">Sydney</string>
-    <string name="level_3_question_2_answer_2">Canberra</string>
-    <string name="level_3_question_2_answer_3">Melbourne</string>
-    <string name="level_3_question_2_answer_4">Perth</string>
-    <string name="level_3_question_2_answer_wrong">Nah, the capital of Australia is Canberra</string>
-
-    <string name="level_3_question_3">What is the country on the map?</string>
-    <string name="level_3_question_3_answer_1">Colombia</string>
-    <string name="level_3_question_3_answer_2">Ecuador</string>
-    <string name="level_3_question_3_answer_3">Guyana</string>
-    <string name="level_3_question_3_answer_4">Venezuela</string>
-    <string name="level_3_question_3_answer_wrong">lmao, it\'s Venezuela, you\'re dumbass</string>
-
-    <string name="level_3_question_4">Which country Easter Island belongs to?</string>
-    <string name="level_3_question_4_answer_1">Chile</string>
-    <string name="level_3_question_4_answer_2">Argentine</string>
-    <string name="level_3_question_4_answer_3">Mexico</string>
-    <string name="level_3_question_4_answer_4">It\'s an independent&#10;island</string>
-    <string name="level_3_question_4_answer_wrong">Easter Island belongs to Chile</string>
-
-    <string name="level_3_question_5">Flag of the country</string>
-    <string name="level_3_question_5_answer_1">Norway</string>
-    <string name="level_3_question_5_answer_2">Denmark</string>
-    <string name="level_3_question_5_answer_3">Iceland</string>
-    <string name="level_3_question_5_answer_4">Faroe Islands</string>
-    <string name="level_3_question_5_answer_wrong">It\'s the flag of Faroe Islands</string>
-
-    <string name="level_3_question_6">Which currency doesn\'t exist?</string>
-    <string name="level_3_question_6_answer_1">Guyanese&#10;Dollar</string>
-    <string name="level_3_question_6_answer_2">Kiribati&#10;Dollar</string>
-    <string name="level_3_question_6_answer_3">East Caribbean&#10;Dollar</string>
-    <string name="level_3_question_6_answer_4">South African&#10;Dollar</string>
-    <string name="level_3_question_6_answer_wrong">The currency of South Africa is actually is Rand</string>
-
-    <string name="level_3_question_7">The name of the currency</string>
-    <string name="level_3_question_7_answer_1">Luxembourg franc</string>
-    <string name="level_3_question_7_answer_2">Swiss franc</string>
-    <string name="level_3_question_7_answer_3">Czech koruna</string>
-    <string name="level_3_question_7_answer_4">French franc</string>
-    <string name="level_3_question_7_answer_wrong">It\'s the currency of Switzerland</string>
-
-    <string name="level_3_question_8">Country with highest number of islands?</string>
-    <string name="level_3_question_8_answer_1">Japan</string>
-    <string name="level_3_question_8_answer_2">Philippines</string>
-    <string name="level_3_question_8_answer_3">Finland</string>
-    <string name="level_3_question_8_answer_4">Indonesia</string>
-    <string name="level_3_question_8_answer_wrong">Unexpectedly, it\'s Finland, that has over 100,000 islands</string>
-
-    <string name="level_3_question_9">City with the most expensive real estate?</string>
-    <string name="level_3_question_9_answer_1">Monaco</string>
-    <string name="level_3_question_9_answer_2">New York City</string>
-    <string name="level_3_question_9_answer_3">Hong Kong</string>
-    <string name="level_3_question_9_answer_4">Dubai</string>
-    <string name="level_3_question_9_answer_wrong">No, Monaco is the most expensive one (Price per Square Meter to Buy Apartment in City Centre	53k €,  Outside of Centre - 35k €</string>
-
-    <string name="level_3_question_10">Which country has this coat of arms </string>
-    <string name="level_3_question_10_answer_1">Portugal</string>
-    <string name="level_3_question_10_answer_2">Germany</string>
-    <string name="level_3_question_10_answer_3">France</string>
-    <string name="level_3_question_10_answer_4">Spain</string>
-    <string name="level_3_question_10_answer_wrong">It\'s French national emblem</string>
-
-
-    <string name="image_content_description">image question</string>
+    <!--just some housekeeping-->
+    <string name="image_content_description" translatable="false">image question</string>
 </resources>

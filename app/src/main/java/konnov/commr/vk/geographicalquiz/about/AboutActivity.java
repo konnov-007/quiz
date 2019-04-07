@@ -16,15 +16,16 @@ public class AboutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.level_selector_toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(R.string.about_text);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
-        if(getSupportActionBar() != null)
+        if(getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getFragmentManager().beginTransaction().replace(R.id.content_frame, new AboutFragment()).commit();
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+        getFragmentManager().beginTransaction().replace(R.id.content_frame, new AboutFragment()).commit(); //TODO change to getSupportFragment
     }
 
     @Override

@@ -1,48 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="konnov.commr.vk.geographicalquiz.mainmenu.MainMenuActivity"
-    android:background="@drawable/background_earth"
-    >
+    android:background="@drawable/background_earth_bitmap"
+    android:orientation="vertical">
 
-    <Button
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/main_menu_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/new_game_bttn_text"
-        android:id="@+id/new_game_button"
-        android:layout_marginTop="120dp"
-        android:background="@android:color/holo_blue_light"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:title="@string/app_name"/>
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/update_db"
-        android:id="@+id/update_db_button"
-        android:layout_below="@+id/new_game_button"
-        android:layout_marginTop="20dp"
-        android:background="@android:color/holo_blue_light"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/about_text"
-        android:id="@+id/about_button"
-        android:background="@android:color/holo_blue_light"
-        android:layout_below="@+id/update_db_button"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/new_game_btn_text"
+            android:id="@+id/new_game_button"
+            android:layout_marginTop="39dp"
+            android:background="@android:color/holo_blue_light" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/update_db"
+            android:id="@+id/update_db_button"
+            android:layout_marginTop="20dp"
+            android:background="@android:color/holo_blue_light" />
 
-</RelativeLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_text"
+            android:id="@+id/about_button"
+            android:background="@android:color/holo_blue_light"
+            android:layout_marginTop="20dp" />
+
+    </LinearLayout>
+</LinearLayout>
