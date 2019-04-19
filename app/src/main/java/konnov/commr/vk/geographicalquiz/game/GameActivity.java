@@ -104,8 +104,7 @@ public class GameActivity extends AppCompatActivity implements GameContract.View
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        startActivity(new Intent(GameActivity.this, LevelSelectorActivity.class));
-                        finish();
+                        onBackPressed();
                     }
                 })
                 .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {

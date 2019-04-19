@@ -11,7 +11,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
 import konnov.commr.vk.geographicalquiz.R;
 import konnov.commr.vk.geographicalquiz.game.GameActivity;
-import konnov.commr.vk.geographicalquiz.mainmenu.MainMenuActivity;
 
 public class LevelSelectorActivity extends AppCompatActivity implements  LevelSelectorContract.View{
 
@@ -65,16 +64,9 @@ public class LevelSelectorActivity extends AppCompatActivity implements  LevelSe
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle arrow click here
         if (item.getItemId() == android.R.id.home) {
-            startActivity(new Intent(this, MainMenuActivity.class));
-            finish();
+            onBackPressed();
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onBackPressed(){
-        startActivity(new Intent(this, MainMenuActivity.class));
-        finish();
     }
 
     @Override

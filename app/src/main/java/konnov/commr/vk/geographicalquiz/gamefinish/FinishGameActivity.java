@@ -22,12 +22,4 @@ public class FinishGameActivity extends AppCompatActivity {
         String outputString = getString(R.string.congrats, finishScore);
         finishtext.setText(outputString);
     }
-
-    @Override
-    public void onBackPressed(){
-        startActivity(new Intent(this, LevelSelectorActivity.class));
-        finish();
-    }
-
-
 }
