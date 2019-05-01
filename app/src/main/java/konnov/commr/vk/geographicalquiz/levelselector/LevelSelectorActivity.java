@@ -35,7 +35,6 @@ public class LevelSelectorActivity extends AppCompatActivity implements  LevelSe
         }
     }
 
-    @Override
     public void startQuestions(View v) {
         Intent intent = new Intent(this, GameActivity.class);
 
@@ -43,7 +42,6 @@ public class LevelSelectorActivity extends AppCompatActivity implements  LevelSe
             case R.id.easy_level_button:
                 int level = 0;
                 intent.putExtra("level", level);
-                Toast.makeText(this, "Пока сделано только несколько вопросов", Toast.LENGTH_LONG).show();
                 startActivity(intent);
                 break;
             case R.id.medium_level_button: //TODO implement other difficulties
@@ -62,7 +60,7 @@ public class LevelSelectorActivity extends AppCompatActivity implements  LevelSe
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // handle arrow click here
+        // handle back arrow click here
         if (item.getItemId() == android.R.id.home) {
             onBackPressed();
         }

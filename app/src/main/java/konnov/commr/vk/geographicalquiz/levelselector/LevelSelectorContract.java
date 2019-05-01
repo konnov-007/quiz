@@ -5,13 +5,7 @@ import konnov.commr.vk.geographicalquiz.BaseView;
 
 public interface LevelSelectorContract {
 
-    interface View extends BaseView<Presenter> {
+    interface View extends BaseView<Presenter> {}
 
-        void startQuestions(android.view.View view);
-
-    }
-
-    interface Presenter extends BasePresenter<View> {
-
-    }
+    interface Presenter extends BasePresenter<View> {}
 }

@@ -11,10 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.snackbar.Snackbar;
+
 import konnov.commr.vk.geographicalquiz.Injection;
 import konnov.commr.vk.geographicalquiz.R;
 import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
@@ -36,22 +38,28 @@ public class GameActivity extends AppCompatActivity implements GameContract.View
 
     private GamePresenter mPresenter;
 
+    private final int DELAY_AFTER_WRONG_ANSWER = 3500;
+
+    private final int DELAY_AFTER_RIGHT_ANSWER = 2000;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_game);
         initUI();
-        mPresenter.takeView(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        mPresenter.takeView(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        mPresenter.dropView();
     }
 
     private void initUI(){
@@ -104,13 +112,14 @@ public class GameActivity extends AppCompatActivity implements GameContract.View
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
                         onBackPressed();
                     }
                 })
                 .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //no
+                        dialog.dismiss();
                     }
                 })
                 .setIcon(android.R.drawable.ic_dialog_alert)
@@ -146,17 +155,17 @@ public class GameActivity extends AppCompatActivity implements GameContract.View
     }
 
     @Override
-    public void reportWrongAnswer(String rightAnswerExplanation, int wrongAnswer) { //TODO
-        handleReply(3500, Color.RED, rightAnswerExplanation, wrongAnswer, Toast.LENGTH_LONG);
+    public void reportWrongAnswer(String rightAnswerExplanation, int wrongAnswer) {
+        handleReply(DELAY_AFTER_WRONG_ANSWER, Color.RED, rightAnswerExplanation, wrongAnswer, Snackbar.LENGTH_LONG);
     }
 
     @Override
     public void reportRightAnswer(int rightAnswer) {
-        handleReply(2000, Color.GREEN, getString(R.string.right_answer), rightAnswer, Toast.LENGTH_SHORT);
+        handleReply(DELAY_AFTER_RIGHT_ANSWER, Color.GREEN, getString(R.string.right_answer), rightAnswer, Snackbar.LENGTH_SHORT);
 
     }
 
-    private void handleReply(int delay, int buttonBackground, String feedbackText, int clickedButton, int toastLength){
+    private void handleReply(int delay, int buttonBackground, String feedbackText, int clickedButton, int snackbarLength){
         first_answer_button.setEnabled(false);
         second_answer_button.setEnabled(false);
         third_answer_button.setEnabled(false);
@@ -179,7 +188,7 @@ public class GameActivity extends AppCompatActivity implements GameContract.View
                 break;
             }
         }
-        Toast.makeText(this, feedbackText, toastLength).show();
+        showMessage(feedbackText, snackbarLength);
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -202,18 +211,15 @@ public class GameActivity extends AppCompatActivity implements GameContract.View
         Intent intent = new Intent(GameActivity.this, FinishGameActivity.class);
         intent.putExtra("int_score", score);
         startActivity(intent);
-        finish();
     }
 
     @Override
     public void showLoadingError() {
-        //todo show error
+        showMessage(getResources().getString(R.string.network_error), Snackbar.LENGTH_LONG);
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        mPresenter.dropView();
+    private void showMessage(String message, int length) {
+        Snackbar.make(findViewById(android.R.id.content), message, length).show();
     }
 }
 

@@ -19,7 +19,6 @@ public interface GameContract {
         void showGameResults(int score);
 
         void showLoadingError();
-
     }
 
     interface Presenter extends BasePresenter<View>{

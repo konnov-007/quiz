@@ -24,23 +24,28 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.google.firebase:firebase-storage:16.1.0'
-    implementation 'com.google.firebase:firebase-auth:16.2.1'
-    testImplementation 'junit:junit:4.12'
+
+    //UI
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
     implementation "com.google.android.material:material:$materialVersion"
 
+    //Firebase
+    implementation 'com.google.firebase:firebase-storage:16.1.0'
+    implementation 'com.google.firebase:firebase-auth:16.2.1'
     implementation "com.google.firebase:firebase-core:$rootProject.firebaseCore"
     implementation "com.google.firebase:firebase-database:$rootProject.firebaseDatabase"
     implementation "com.google.firebase:firebase-storage:$rootProject.firebaseStorage"
 
-    implementation "androidx.legacy:legacy-support-v4:$rootProject.androidXLegacySupport"
-    implementation "androidx.test.espresso:espresso-idling-resource:$rootProject.espressoVersion"
-    implementation "com.google.guava:guava:$rootProject.guavaVersion"
+    //Room
     implementation "androidx.room:room-runtime:$rootProject.roomVersion"
     annotationProcessor "androidx.room:room-compiler:$rootProject.roomVersion"
-    compile "androidx.core:core-ktx:1.0.1"
+
+    //Kotlin
+    implementation "androidx.core:core-ktx:1.0.1"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    //Guava library that gives additional tools like @Nullable annotation
+    implementation "com.google.guava:guava:$rootProject.guavaVersion"
 
 }
 

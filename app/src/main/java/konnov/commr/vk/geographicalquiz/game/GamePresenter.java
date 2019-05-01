@@ -58,6 +58,13 @@ public class GamePresenter implements GameContract.Presenter{
         });
     }
 
+    /**
+     *
+     * @param buttonNumber - the number of the button that was clicked
+     * There are four answer buttons, their numbers are as follows:
+     *  [1] [2]
+     *  [3] [4]
+     */
     @Override
     public void answerButtonClick(int buttonNumber) {
         if(buttonNumber == mQuestions.valueAt(mQuestionIndex).getRightAnswer()) {

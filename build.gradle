@@ -44,8 +44,6 @@ ext {
     firebaseCore = '16.0.8'
 
     guavaVersion = '27.0.1-android'
-    junitVersion = '4.12'
-    espressoVersion = '3.1.1'
     roomVersion = '2.0.0'
 
 }
