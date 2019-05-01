@@ -1,5 +1,6 @@
 package konnov.commr.vk.geographicalquiz.game;
 
+import android.graphics.Bitmap;
 import android.util.SparseArray;
 
 import konnov.commr.vk.geographicalquiz.data.pojo.Question;
@@ -76,7 +77,14 @@ public class GamePresenter implements GameContract.Presenter{
             return;
         }
         Translation questionText = mTranslations.get(mQuestions.valueAt(mQuestionIndex).getQuestionId());
-        mView.setNewQuestionText(questionText);
+        if(questionText.getImgLocation() != null) {
+            Bitmap image = mQuestionsRepository.getImage(questionText.getImgLocation());
+            if(image != null) {
+                mView.setNewQuestionText(questionText, image);
+            }
+        } else {
+            mView.setNewQuestionText(questionText, null);
+        }
     }
 
     @Override

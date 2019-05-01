@@ -3,6 +3,10 @@ package konnov.commr.vk.geographicalquiz.data.source;
 import android.util.SparseArray;
 
 import androidx.annotation.NonNull;
+
+import java.util.ArrayList;
+
+import konnov.commr.vk.geographicalquiz.data.pojo.Image;
 import konnov.commr.vk.geographicalquiz.data.pojo.Question;
 import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
 
@@ -16,6 +20,15 @@ public interface QuestionsDataSource {
 
         void onDataNotAvailable();
     }
+
+    interface ImagesReceivedCallback {
+
+        void onImagesLoaded(ArrayList<Image> images);
+
+        void onDataNotAvailable();
+    }
+
+    void getImages(@NonNull SparseArray<Translation> translations, ImagesReceivedCallback callback);
 
     void getQuestions(@NonNull LoadQuestionsCallback callback);
 

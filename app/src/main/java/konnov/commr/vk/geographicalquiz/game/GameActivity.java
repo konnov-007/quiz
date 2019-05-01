@@ -2,6 +2,7 @@ package konnov.commr.vk.geographicalquiz.game;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Handler;
@@ -18,7 +19,6 @@ import konnov.commr.vk.geographicalquiz.Injection;
 import konnov.commr.vk.geographicalquiz.R;
 import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
 import konnov.commr.vk.geographicalquiz.gamefinish.FinishGameActivity;
-import konnov.commr.vk.geographicalquiz.levelselector.LevelSelectorActivity;
 
 public class GameActivity extends AppCompatActivity implements GameContract.View, View.OnClickListener{
 
@@ -32,7 +32,7 @@ public class GameActivity extends AppCompatActivity implements GameContract.View
 
     private Button fourth_answer_button;
 
-    private ImageView question_pic; //TODO implement displaying picture
+    private ImageView question_pic;
 
     private GamePresenter mPresenter;
 
@@ -136,15 +136,13 @@ public class GameActivity extends AppCompatActivity implements GameContract.View
     }
 
     @Override
-    public void setNewQuestionText(Translation translation) { //TODO add pic
+    public void setNewQuestionText(Translation translation, Bitmap image) {
         question_text.setText(translation.getTitle());
         first_answer_button.setText(translation.getAnswerOne());
         second_answer_button.setText(translation.getAnswerTwo());
         third_answer_button.setText(translation.getAnswerThree());
         fourth_answer_button.setText(translation.getAnswerFour());
-        if(translation.getImgLocation() != null) {
-            System.out.println("image should be inserted");
-        }
+        question_pic.setImageBitmap(image);
     }
 
     @Override

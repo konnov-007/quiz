@@ -5,6 +5,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import konnov.commr.vk.geographicalquiz.data.source.QuestionsRepository;
 import konnov.commr.vk.geographicalquiz.data.source.QuestionsDataSource;
+import konnov.commr.vk.geographicalquiz.data.source.local.BitmapStorage;
 import konnov.commr.vk.geographicalquiz.data.source.local.QuestionsDatabase;
 import konnov.commr.vk.geographicalquiz.data.source.local.QuestionsLocalDataSource;
 import konnov.commr.vk.geographicalquiz.data.source.remote.QuestionsRemoteDataSource;
@@ -19,8 +20,10 @@ import konnov.commr.vk.geographicalquiz.util.AppExecutors;
 public class Injection {
     public static QuestionsRepository provideQuestionsRepository(@NonNull Context context) {
         QuestionsDatabase database = QuestionsDatabase.getInstance(context);
+        BitmapStorage bitmapStorage = BitmapStorage.getInstance(context);
         return QuestionsRepository.getInstance(QuestionsRemoteDataSource.getInstance(),
                 QuestionsLocalDataSource.getInstance(new AppExecutors(),
-                        database.questionsDao(), database.translationsDao()));
+                        database.questionsDao(), database.translationsDao()),
+                bitmapStorage);
     }
 }

@@ -5,6 +5,7 @@ import android.util.SparseArray;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+
 import konnov.commr.vk.geographicalquiz.data.pojo.Question;
 import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
 import konnov.commr.vk.geographicalquiz.data.source.QuestionsDataSource;
@@ -37,6 +38,12 @@ public class QuestionsLocalDataSource implements QuestionsDataSource {
             INSTANCE = new QuestionsLocalDataSource(appExecutors, questionsDao, translationsDao);
         }
         return INSTANCE;
+    }
+
+
+    @Override
+    public void getImages(@NonNull SparseArray<Translation> translations, ImagesReceivedCallback callback) {
+        //TODO
     }
 
     @Override

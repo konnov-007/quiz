@@ -1,19 +1,16 @@
 package konnov.commr.vk.geographicalquiz.game;
 
-import android.util.SparseArray;
-
-import java.util.HashMap;
+import android.graphics.Bitmap;
 
 import konnov.commr.vk.geographicalquiz.BasePresenter;
 import konnov.commr.vk.geographicalquiz.BaseView;
-import konnov.commr.vk.geographicalquiz.data.pojo.Question;
 import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
 
 public interface GameContract {
 
     interface View extends BaseView<Presenter>{
 
-        void setNewQuestionText(Translation translation);
+        void setNewQuestionText(Translation translation, Bitmap image);
 
         void reportWrongAnswer(String rightAnswerExplanation, int wrongAnswer);
 

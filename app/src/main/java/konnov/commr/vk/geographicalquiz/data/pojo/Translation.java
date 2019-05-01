@@ -112,6 +112,10 @@ public final class Translation {
         return wrongAnswerComment;
     }
 
+    public void setImgLocation(@Nullable String imgLocation) {
+        this.imgLocation = imgLocation;
+    }
+
     @NonNull
     @Override
     public String toString() {

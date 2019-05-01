@@ -1,10 +1,14 @@
 package konnov.commr.vk.geographicalquiz.data.source;
 
+import android.graphics.Bitmap;
 import android.util.SparseArray;
 
 import androidx.annotation.NonNull;
+import java.util.ArrayList;
+import konnov.commr.vk.geographicalquiz.data.pojo.Image;
 import konnov.commr.vk.geographicalquiz.data.pojo.Question;
 import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
+import konnov.commr.vk.geographicalquiz.data.source.local.BitmapStorage;
 
 public class QuestionsRepository implements QuestionsDataSource{
 
@@ -13,6 +17,8 @@ public class QuestionsRepository implements QuestionsDataSource{
     private final QuestionsDataSource mQuestionsRemoteDataSource;
 
     private final QuestionsDataSource mQuestionsLocalDataSource;
+
+    private final BitmapStorage mBitmapStorage;
 
     SparseArray<Question> mCachedQuestions; //questionId : question map
 
@@ -25,22 +31,34 @@ public class QuestionsRepository implements QuestionsDataSource{
     boolean mCacheIsDirty = false;
 
     private QuestionsRepository (@NonNull QuestionsDataSource questionsRemoteDataSource,
-                                       @NonNull QuestionsDataSource questionsLocalDataSource) {
+                                       @NonNull QuestionsDataSource questionsLocalDataSource,
+                                        @NonNull BitmapStorage bitmapStorage) {
         mQuestionsRemoteDataSource = questionsRemoteDataSource;
         mQuestionsLocalDataSource = questionsLocalDataSource;
+        mBitmapStorage = bitmapStorage;
     }
 
 
     public static QuestionsRepository getInstance (QuestionsDataSource questionsRemoteDataSource,
-                                                   QuestionsDataSource questionsLocalDataSource) {
+                                                   QuestionsDataSource questionsLocalDataSource,
+                                                   BitmapStorage bitmapStorage) {
         if (INSTANCE == null) {
-            INSTANCE = new QuestionsRepository(questionsRemoteDataSource, questionsLocalDataSource);
+            INSTANCE = new QuestionsRepository(questionsRemoteDataSource, questionsLocalDataSource, bitmapStorage);
         }
         return INSTANCE;
     }
 
     public static void destroyInstance(){
         INSTANCE = null;
+    }
+
+    @Override
+    public void getImages(@NonNull SparseArray<Translation> translations, ImagesReceivedCallback callback) {
+
+    }
+
+    public Bitmap getImage(String filename) {
+        return mBitmapStorage.getImage(filename);
     }
 
     /**
@@ -105,10 +123,23 @@ public class QuestionsRepository implements QuestionsDataSource{
             }
 
             @Override
-            public void onTranslationsLoaded(SparseArray<Translation> translations) {
-                refreshCacheTranslations(translations);
-                refreshTranslationsTable(translations);
-                callback.onTranslationsLoaded(translations);
+            public void onTranslationsLoaded(final SparseArray<Translation> translations) {
+                mQuestionsRemoteDataSource.getImages(translations, new ImagesReceivedCallback() {
+
+                    @Override
+                    public void onImagesLoaded(ArrayList<Image> images) {
+                        mBitmapStorage.saveImages(images);
+                        refreshCacheTranslations(translations);
+                        refreshTranslationsTable(translations);
+                        callback.onTranslationsLoaded(translations);
+                    }
+
+                    @Override
+                    public void onDataNotAvailable() {
+                        callback.onDataNotAvailable();
+                    }
+                });
+
             }
 
             @Override
