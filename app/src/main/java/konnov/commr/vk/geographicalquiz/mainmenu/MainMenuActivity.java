@@ -1,10 +1,10 @@
 package konnov.commr.vk.geographicalquiz.mainmenu;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -14,11 +14,12 @@ import konnov.commr.vk.geographicalquiz.about.AboutActivity;
 import konnov.commr.vk.geographicalquiz.levelselector.LevelSelectorActivity;
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainMenuActivity extends AppCompatActivity implements MainMenuContract.View{
+public class MainMenuActivity extends AppCompatActivity implements MainMenuContract.View, View.OnClickListener {
 
     private MainMenuPresenter mPresenter;
 
-    //todo maybe make a progress dialog of fetching server data
+    private ProgressDialog mProgressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,29 +34,23 @@ public class MainMenuActivity extends AppCompatActivity implements MainMenuContr
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(Color.WHITE);
 
-        Button newGameButton = findViewById(R.id.new_game_button);
-        newGameButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startNewGame();
-            }
-        });
+        mProgressDialog = new ProgressDialog(MainMenuActivity.this);
+    }
 
-        Button aboutButton = findViewById(R.id.about_button);
-        aboutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.new_game_button: {
+                startNewGame();
+                break;
+            }
+            case R.id.about_button: {
                 startAbout();
             }
-        });
-
-        Button updateButton = findViewById(R.id.update_db_button);
-        updateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            case R.id.update_db_button: {
                 updateDB();
             }
-        });
+        }
     }
 
     @Override
@@ -63,11 +58,6 @@ public class MainMenuActivity extends AppCompatActivity implements MainMenuContr
         super.onResume();
         mPresenter.takeView(this);
         mPresenter.fetchQuestions();
-    }
-
-    @Override
-    public void onBackPressed(){
-        finish();
     }
 
 
@@ -79,32 +69,36 @@ public class MainMenuActivity extends AppCompatActivity implements MainMenuContr
 
     @Override
     public void showLoadingQuestionsError() {
+        mProgressDialog.dismiss();
         showMessage(getString(R.string.network_error));
     }
 
     @Override
     public void showUpdatingQuestionsSuccess() {
-        showMessage(getString(R.string.network_success));
+        mProgressDialog.dismiss();
+    }
+
+    @Override
+    public void showLoadingQuestionsStarted() {
+        mProgressDialog.setMessage(getResources().getString(R.string.database_loading));
+        mProgressDialog.show();
     }
 
     private void showMessage(String message) {
         Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).show();
     }
 
-    @Override
-    public void startNewGame() {
+    private void startNewGame() {
         Intent intent = new Intent(this, LevelSelectorActivity.class);
         startActivity(intent);
     }
 
-    @Override
-    public void startAbout() {
+    private void startAbout() {
         Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
     }
 
-    @Override
-    public void updateDB() {
+    private void updateDB() {
         mPresenter.updateQuestions();
     }
 }

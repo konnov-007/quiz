@@ -8,9 +8,7 @@ public interface MainMenuContract {
     interface View extends BaseView<Presenter> {
         void showLoadingQuestionsError();
         void showUpdatingQuestionsSuccess();
-        void startNewGame();
-        void startAbout();
-        void updateDB();
+        void showLoadingQuestionsStarted();
     }
 
     interface Presenter extends BasePresenter<View> {

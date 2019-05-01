@@ -10,7 +10,6 @@ import konnov.commr.vk.geographicalquiz.data.source.QuestionsDataSource;
 public class MainMenuPresenter implements MainMenuContract.Presenter {
     private MainMenuContract.View mView = null;
     private final QuestionsRepository mQuestionsRepository;
-    private boolean mUpdateButtonClicked = false;
 
     public MainMenuPresenter(QuestionsRepository questionsRepository){
         mQuestionsRepository = questionsRepository;
@@ -23,6 +22,8 @@ public class MainMenuPresenter implements MainMenuContract.Presenter {
      */
     @Override
     public void fetchQuestions() {
+        mView.showLoadingQuestionsStarted();
+
         mQuestionsRepository.getQuestions(new QuestionsDataSource.LoadQuestionsCallback() {
             @Override
             public void onQuestionsLoaded(SparseArray<Question> questions) {
@@ -32,10 +33,7 @@ public class MainMenuPresenter implements MainMenuContract.Presenter {
             @Override
             public void onTranslationsLoaded(SparseArray<Translation> translations) {
                 System.out.println("Translations received, size: " + translations.size() + ", data: " + translations);
-                if(mUpdateButtonClicked) {
-                    mView.showUpdatingQuestionsSuccess();
-                    mUpdateButtonClicked = false;
-                }
+                mView.showUpdatingQuestionsSuccess();
             }
 
             @Override
@@ -48,7 +46,6 @@ public class MainMenuPresenter implements MainMenuContract.Presenter {
     @Override
     public void updateQuestions() {
         mQuestionsRepository.refreshQuestions();
-        mUpdateButtonClicked = true;
         fetchQuestions();
     }
 
