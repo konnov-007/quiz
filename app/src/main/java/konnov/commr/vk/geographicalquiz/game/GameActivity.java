@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Bundle;
 import android.view.View;
@@ -113,7 +112,7 @@ public class GameActivity extends AppCompatActivity implements GameContract.View
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        onBackPressed();
+                        finish();
                     }
                 })
                 .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
@@ -126,23 +125,6 @@ public class GameActivity extends AppCompatActivity implements GameContract.View
                 .show();
     }
 
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            View decorView = getWindow().getDecorView();
-            if (hasFocus) {
-                decorView.setSystemUiVisibility(
-                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                                | View.SYSTEM_UI_FLAG_FULLSCREEN
-                                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-            }
-        }
-    }
 
     @Override
     public void setNewQuestionText(Translation translation, Bitmap image) {
@@ -193,10 +175,10 @@ public class GameActivity extends AppCompatActivity implements GameContract.View
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                first_answer_button.setBackgroundResource(android.R.drawable.btn_default);
-                second_answer_button.setBackgroundResource(android.R.drawable.btn_default);
-                third_answer_button.setBackgroundResource(android.R.drawable.btn_default);
-                fourth_answer_button.setBackgroundResource(android.R.drawable.btn_default);
+                first_answer_button.setBackgroundResource(android.R.color.holo_blue_light);
+                second_answer_button.setBackgroundResource(android.R.color.holo_blue_light);
+                third_answer_button.setBackgroundResource(android.R.color.holo_blue_light);
+                fourth_answer_button.setBackgroundResource(android.R.color.holo_blue_light);
                 first_answer_button.setEnabled(true);
                 second_answer_button.setEnabled(true);
                 third_answer_button.setEnabled(true);
