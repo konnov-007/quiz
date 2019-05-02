@@ -14,7 +14,7 @@ import konnov.commr.vk.geographicalquiz.about.AboutActivity;
 import konnov.commr.vk.geographicalquiz.levelselector.LevelSelectorActivity;
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainMenuActivity extends AppCompatActivity implements MainMenuContract.View, View.OnClickListener {
+public class MainMenuActivity extends AppCompatActivity implements MainMenuContract.View {
 
     private MainMenuPresenter mPresenter;
 
@@ -37,7 +37,6 @@ public class MainMenuActivity extends AppCompatActivity implements MainMenuContr
         mProgressDialog = new ProgressDialog(MainMenuActivity.this);
     }
 
-    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.new_game_button: {

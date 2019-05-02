@@ -148,10 +148,8 @@ public class GameActivity extends AppCompatActivity implements GameContract.View
     }
 
     private void handleReply(int delay, int buttonBackground, String feedbackText, int clickedButton, int snackbarLength){
-        first_answer_button.setEnabled(false);
-        second_answer_button.setEnabled(false);
-        third_answer_button.setEnabled(false);
-        fourth_answer_button.setEnabled(false);
+        disableButtons();
+
         switch (clickedButton) {
             case 1: {
                 first_answer_button.setBackgroundColor(buttonBackground);
@@ -175,14 +173,7 @@ public class GameActivity extends AppCompatActivity implements GameContract.View
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                first_answer_button.setBackgroundResource(android.R.color.holo_blue_light);
-                second_answer_button.setBackgroundResource(android.R.color.holo_blue_light);
-                third_answer_button.setBackgroundResource(android.R.color.holo_blue_light);
-                fourth_answer_button.setBackgroundResource(android.R.color.holo_blue_light);
-                first_answer_button.setEnabled(true);
-                second_answer_button.setEnabled(true);
-                third_answer_button.setEnabled(true);
-                fourth_answer_button.setEnabled(true);
+                enableButtons();
                 mPresenter.provideQuestionText();
             }
         }, delay);
@@ -202,6 +193,24 @@ public class GameActivity extends AppCompatActivity implements GameContract.View
 
     private void showMessage(String message, int length) {
         Snackbar.make(findViewById(android.R.id.content), message, length).show();
+    }
+
+    private void disableButtons(){
+        first_answer_button.setEnabled(false);
+        second_answer_button.setEnabled(false);
+        third_answer_button.setEnabled(false);
+        fourth_answer_button.setEnabled(false);
+    }
+
+    private void enableButtons(){
+        first_answer_button.setBackgroundResource(android.R.color.holo_blue_light);
+        second_answer_button.setBackgroundResource(android.R.color.holo_blue_light);
+        third_answer_button.setBackgroundResource(android.R.color.holo_blue_light);
+        fourth_answer_button.setBackgroundResource(android.R.color.holo_blue_light);
+        first_answer_button.setEnabled(true);
+        second_answer_button.setEnabled(true);
+        third_answer_button.setEnabled(true);
+        fourth_answer_button.setEnabled(true);
     }
 }
 
