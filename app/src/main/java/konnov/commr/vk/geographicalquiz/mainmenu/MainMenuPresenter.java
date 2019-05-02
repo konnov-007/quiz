@@ -1,6 +1,9 @@
 package konnov.commr.vk.geographicalquiz.mainmenu;
 
+import android.util.Log;
 import android.util.SparseArray;
+
+import com.crashlytics.android.Crashlytics;
 
 import konnov.commr.vk.geographicalquiz.data.source.QuestionsRepository;
 import konnov.commr.vk.geographicalquiz.data.pojo.Question;
@@ -27,12 +30,12 @@ public class MainMenuPresenter implements MainMenuContract.Presenter {
         mQuestionsRepository.getQuestions(new QuestionsDataSource.LoadQuestionsCallback() {
             @Override
             public void onQuestionsLoaded(SparseArray<Question> questions) {
-                System.out.println("Questions received, size: " + questions.size() + ", data: "  + questions);
+                Crashlytics.log(Log.DEBUG, "MainMenuPresenter","Questions received, size: " + questions.size() + ", data: "  + questions);
             }
 
             @Override
             public void onTranslationsLoaded(SparseArray<Translation> translations) {
-                System.out.println("Translations received, size: " + translations.size() + ", data: " + translations);
+                Crashlytics.log(Log.DEBUG, "MainMenuPresenter", "Translations received, size: " + translations.size() + ", data: " + translations);
                 mView.showUpdatingQuestionsSuccess();
             }
 

@@ -1,9 +1,10 @@
 package konnov.commr.vk.geographicalquiz.data.source.local;
 
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
+import com.crashlytics.android.Crashlytics;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -52,7 +53,7 @@ public class BitmapStorage {
                         fos.write(stream.toByteArray());
                         fos.close();
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        Crashlytics.logException(e);
                     }
                 }
             }
@@ -67,7 +68,7 @@ public class BitmapStorage {
             Bitmap bitmap = BitmapFactory.decodeStream(fis);
             return bitmap;
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            Crashlytics.logException(e);
         }
         return null;
     }

@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.SparseArray;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -96,7 +97,7 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
                             }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception exception) {
-                            exception.printStackTrace();
+                            Crashlytics.logException(exception);
                             callback.onDataNotAvailable();
                         }
                     });
@@ -165,7 +166,7 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
+                Crashlytics.logException(databaseError.toException());
                 callback.onDataNotAvailable();
             }
         });
@@ -191,7 +192,7 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
+                Crashlytics.logException(databaseError.toException());
                 callback.onDataNotAvailable();
             }
         });
