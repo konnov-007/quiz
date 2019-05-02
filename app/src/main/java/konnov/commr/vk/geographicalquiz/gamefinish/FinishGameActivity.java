@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import konnov.commr.vk.geographicalquiz.R;
-import konnov.commr.vk.geographicalquiz.levelselector.LevelSelectorActivity;
+import konnov.commr.vk.geographicalquiz.mainmenu.MainMenuActivity;
 
 public class FinishGameActivity extends AppCompatActivity {
     TextView finishtext;
@@ -21,5 +21,11 @@ public class FinishGameActivity extends AppCompatActivity {
         int finishScore = intent.getIntExtra("int_score", 0);
         String outputString = getString(R.string.congrats, finishScore);
         finishtext.setText(outputString);
+    }
+
+    @Override
+    public void onBackPressed() { //todo make an actual return to menu button
+        Intent intent = new Intent(this, MainMenuActivity.class);
+        startActivity(intent);
     }
 }

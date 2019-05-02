@@ -25,6 +25,7 @@ import konnov.commr.vk.geographicalquiz.data.pojo.Question;
 import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
 import konnov.commr.vk.geographicalquiz.data.source.QuestionsDataSource;
 import konnov.commr.vk.geographicalquiz.data.Entries;
+import konnov.commr.vk.geographicalquiz.util.AppExecutors;
 
 public class QuestionsRemoteDataSource implements QuestionsDataSource {
 
@@ -36,12 +37,15 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
 
     private GenericTypeIndicator<ArrayList<Object>> objectsGTypeInd = new GenericTypeIndicator<ArrayList<Object>>() {};
 
+    private AppExecutors mAppExecutors;
 
-    private QuestionsRemoteDataSource() {}
+    private QuestionsRemoteDataSource(AppExecutors appExecutors) {
+        mAppExecutors = appExecutors;
+    }
 
-    public static QuestionsRemoteDataSource getInstance() {
+    public static QuestionsRemoteDataSource getInstance(AppExecutors appExecutors) {
         if (INSTANCE == null) {
-            INSTANCE = new QuestionsRemoteDataSource();
+            INSTANCE = new QuestionsRemoteDataSource(appExecutors);
         }
         return INSTANCE;
     }
@@ -49,46 +53,57 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
 
     private int imagesToDownload;
     @Override
-    public void getImages(@NonNull SparseArray<Translation> translations, final ImagesReceivedCallback callback) {
-        final ArrayList<Image> resultImages = new ArrayList<>();
-        final ArrayList<Translation> translationsWithImages = getTranslationsWithImages(translations);
-        imagesToDownload = translationsWithImages.size();
-        if(imagesToDownload == 0) {
-            callback.onImagesLoaded(resultImages);
-            return;
-        }
-        for (final Translation translation: translationsWithImages) {
-            final int questionId = translation.getQuestionId();
-            final String imageURL = translation.getImgLocation();
-            StorageReference mImageRef =
-                    FirebaseStorage.getInstance().getReference(imageURL);
-            final long ONE_MEGABYTE = 1024 * 1024;
-            mImageRef.getBytes(ONE_MEGABYTE)
-                    .addOnSuccessListener(new OnSuccessListener<byte[]>() {
+    public void getImages(@NonNull final SparseArray<Translation> translations, final ImagesReceivedCallback callback) {
+        Runnable fetchingImagesRunnable = new Runnable() {
+            @Override
+            public void run() {
+                final ArrayList<Image> resultImages = new ArrayList<>();
+                final ArrayList<Translation> translationsWithImages = getTranslationsWithImages(translations);
+                imagesToDownload = translationsWithImages.size();
+                if(imagesToDownload == 0) {
+                    mAppExecutors.mainThread().execute(new Runnable() {
                         @Override
-                        public void onSuccess(byte[] bytes) {
-                            Bitmap bm = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                            String filename = imageURL.split("/")[1];
-                            Image image = new Image(questionId, bm, filename);
-                            translation.setImgLocation(filename);
-                            resultImages.add(image);
-                            imagesToDownload--;
-                            if(imagesToDownload == 0) {
-                                callback.onImagesLoaded(resultImages);
-                            }
+                        public void run() {
+                            callback.onImagesLoaded(resultImages);
                         }
-                    }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    exception.printStackTrace();
-                    callback.onDataNotAvailable();
+                    });
                 }
-            });
-
-
-
-        }
-
+                for (final Translation translation: translationsWithImages) {
+                    final int questionId = translation.getQuestionId();
+                    final String imageURL = translation.getImgLocation();
+                    StorageReference mImageRef =
+                            FirebaseStorage.getInstance().getReference(imageURL);
+                    final long ONE_MEGABYTE = 1024 * 1024;
+                    mImageRef.getBytes(ONE_MEGABYTE)
+                            .addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                                @Override
+                                public void onSuccess(byte[] bytes) {
+                                    Bitmap bm = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                                    String filename = imageURL.split("/")[1];
+                                    Image image = new Image(questionId, bm, filename);
+                                    translation.setImgLocation(filename);
+                                    resultImages.add(image);
+                                    imagesToDownload--;
+                                    if(imagesToDownload == 0) {
+                                        mAppExecutors.mainThread().execute(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                callback.onImagesLoaded(resultImages);
+                                            }
+                                        });
+                                    }
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            exception.printStackTrace();
+                            callback.onDataNotAvailable();
+                        }
+                    });
+                }
+            }
+        };
+        mAppExecutors.networkIO().execute(fetchingImagesRunnable);
     }
 
     private ArrayList<Translation> getTranslationsWithImages(SparseArray<Translation> translations) {
@@ -127,15 +142,25 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
     public void deleteAllQuestions() {
         //we only delete questions from the local DB
     }
-//todo execute in a different process
 
     private void getQuestionFromFirebase(final LoadQuestionsCallback callback){
         mRootRefQuestions.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                ArrayList<Object> objectsList = dataSnapshot.getValue(objectsGTypeInd);
-                SparseArray<Question> questions = generateQuestionsMap(objectsList);
-                callback.onQuestionsLoaded(questions);
+            public void onDataChange(final DataSnapshot dataSnapshot) {
+                Runnable creatingPOJOsRunnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        ArrayList<Object> objectsList = dataSnapshot.getValue(objectsGTypeInd);
+                        final SparseArray<Question> questions = generateQuestionsMap(objectsList);
+                        mAppExecutors.mainThread().execute(new Runnable() {
+                            @Override
+                            public void run() {
+                                callback.onQuestionsLoaded(questions);
+                            }
+                        });
+                    }
+                };
+                mAppExecutors.networkIO().execute(creatingPOJOsRunnable);
             }
 
             @Override
@@ -147,10 +172,21 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
 
         mRootRefTranslations.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                ArrayList<Object> objectsList = dataSnapshot.getValue(objectsGTypeInd);
-                SparseArray<Translation> translations = generateTranslationsMap(objectsList);
-                callback.onTranslationsLoaded(translations);
+            public void onDataChange(final DataSnapshot dataSnapshot) {
+                Runnable creatingPOJOsRunnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        ArrayList<Object> objectsList = dataSnapshot.getValue(objectsGTypeInd);
+                        final SparseArray<Translation> translations = generateTranslationsMap(objectsList);
+                        mAppExecutors.mainThread().execute(new Runnable() {
+                            @Override
+                            public void run() {
+                                callback.onTranslationsLoaded(translations);
+                            }
+                        });
+                    }
+                };
+                mAppExecutors.networkIO().execute(creatingPOJOsRunnable);
             }
 
             @Override
@@ -193,76 +229,4 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
         }
         return questionsMap;
     }
-
-    private void fetchBitmap(final String imageURL) {
-        StorageReference mImageRef =
-                FirebaseStorage.getInstance().getReference(imageURL);
-        final long ONE_MEGABYTE = 1024 * 1024;
-        mImageRef.getBytes(ONE_MEGABYTE)
-        .addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                Bitmap bm = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                saveImage(bm, imageURL);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                System.out.println(exception.getMessage());
-            }
-        });
-    }
-
-    private void saveImage(Bitmap bitmap, String filename) {
-//        File directory;
-//            directory = getDir(filename, MODE_PRIVATE);
-//        File[] files = directory.listFiles();
-//
-//
-//        String root = Environment.getExternalStorageDirectory().toString();
-//        filename = filename.split("/")[1];
-//        File myDir = new File(root + Entries.IMAGES_FOLDER);
-//        boolean mkDirsResult = myDir.mkdirs();
-//
-//        File file = new File(myDir, filename);
-//
-//        if(file.exists()) {
-//            return;
-//        }
-//
-//        try {
-//            file.createNewFile();
-//            FileOutputStream out = new FileOutputStream(file);
-//            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
-//            out.flush();
-//            out.close();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-    }
-
-
-//    private void saveImage(Bitmap bitmap, String filename) {
-//        String root = Environment.getExternalStorageDirectory().toString();
-//        filename = filename.split("/")[1];
-//        File myDir = new File(root + Entries.IMAGES_FOLDER);
-//        boolean mkDirsResult = myDir.mkdirs();
-//
-//        File file = new File(myDir, filename);
-//
-//        if(file.exists()) {
-//            return;
-//        }
-//
-//        try {
-//            file.createNewFile();
-//            FileOutputStream out = new FileOutputStream(file);
-//            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
-//            out.flush();
-//            out.close();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-
 }

@@ -19,11 +19,16 @@ import konnov.commr.vk.geographicalquiz.util.AppExecutors;
  */
 public class Injection {
     public static QuestionsRepository provideQuestionsRepository(@NonNull Context context) {
+        AppExecutors appExecutors = new AppExecutors();
         QuestionsDatabase database = QuestionsDatabase.getInstance(context);
-        BitmapStorage bitmapStorage = BitmapStorage.getInstance(context);
-        return QuestionsRepository.getInstance(QuestionsRemoteDataSource.getInstance(),
-                QuestionsLocalDataSource.getInstance(new AppExecutors(),
-                        database.questionsDao(), database.translationsDao()),
+        QuestionsLocalDataSource localDataSource = QuestionsLocalDataSource.getInstance(appExecutors,
+                database.questionsDao(), database.translationsDao());
+        BitmapStorage bitmapStorage = BitmapStorage.getInstance(context, appExecutors);
+        QuestionsRemoteDataSource remoteDataSource = QuestionsRemoteDataSource.getInstance(appExecutors);
+
+        return QuestionsRepository.getInstance(
+                remoteDataSource,
+                localDataSource,
                 bitmapStorage);
     }
 }

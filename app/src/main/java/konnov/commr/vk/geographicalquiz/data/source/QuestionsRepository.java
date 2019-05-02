@@ -125,9 +125,9 @@ public class QuestionsRepository implements QuestionsDataSource{
             @Override
             public void onTranslationsLoaded(final SparseArray<Translation> translations) {
                 mQuestionsRemoteDataSource.getImages(translations, new ImagesReceivedCallback() {
-
                     @Override
                     public void onImagesLoaded(ArrayList<Image> images) {
+                        mBitmapStorage.deleteAllImages();
                         mBitmapStorage.saveImages(images);
                         refreshCacheTranslations(translations);
                         refreshTranslationsTable(translations);
