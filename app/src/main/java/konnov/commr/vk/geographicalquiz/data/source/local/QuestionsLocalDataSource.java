@@ -2,12 +2,14 @@ package konnov.commr.vk.geographicalquiz.data.source.local;
 
 import android.util.SparseArray;
 
+import java.util.HashMap;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 
 import konnov.commr.vk.geographicalquiz.data.pojo.Question;
 import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
+import konnov.commr.vk.geographicalquiz.data.pojo.TranslationIdentifier;
 import konnov.commr.vk.geographicalquiz.data.source.QuestionsDataSource;
 import konnov.commr.vk.geographicalquiz.util.AppExecutors;
 import konnov.commr.vk.geographicalquiz.util.Misc;
@@ -42,7 +44,7 @@ public class QuestionsLocalDataSource implements QuestionsDataSource {
 
 
     @Override
-    public void getImages(@NonNull SparseArray<Translation> translations, ImagesReceivedCallback callback) {
+    public void getImages(@NonNull HashMap<TranslationIdentifier, Translation> translations, ImagesReceivedCallback callback) {
         //TODO
     }
 
@@ -54,7 +56,7 @@ public class QuestionsLocalDataSource implements QuestionsDataSource {
                 final List<Translation> translationsList = mTranslationsDao.getTranslations();
                 final List<Question> questionsList = mQuestionsDao.getQuestions();
                 final SparseArray<Question> questionSparseArray = Misc.questionListToSparseArray(questionsList);
-                final SparseArray<Translation> translationsSparseArray = Misc.translationListToSparseArray(translationsList);
+                final HashMap<TranslationIdentifier, Translation> translationsSparseArray = Misc.translationListToHashMap(translationsList);
                 mAppExecutors.mainThread().execute(new Runnable() {
                     @Override
                     public void run() {
@@ -85,12 +87,12 @@ public class QuestionsLocalDataSource implements QuestionsDataSource {
     }
 
     @Override
-    public void saveTranslation(@NonNull final SparseArray<Translation> translations) {
+    public void saveTranslation(@NonNull final HashMap<TranslationIdentifier, Translation> translations) {
         Runnable saveRunnable = new Runnable() {
             @Override
             public void run() {
-                for(int i = 0; i < translations.size(); i++) {
-                    mTranslationsDao.insertTranslation(translations.valueAt(i));
+                for(Translation translation: translations.values()) {
+                    mTranslationsDao.insertTranslation(translation);
                 }
             }
         };

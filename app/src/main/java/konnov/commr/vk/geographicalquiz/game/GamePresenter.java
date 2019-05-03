@@ -3,8 +3,11 @@ package konnov.commr.vk.geographicalquiz.game;
 import android.graphics.Bitmap;
 import android.util.SparseArray;
 
+import java.util.HashMap;
+
 import konnov.commr.vk.geographicalquiz.data.pojo.Question;
 import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
+import konnov.commr.vk.geographicalquiz.data.pojo.TranslationIdentifier;
 import konnov.commr.vk.geographicalquiz.data.source.QuestionsDataSource;
 import konnov.commr.vk.geographicalquiz.data.source.QuestionsRepository;
 
@@ -44,21 +47,33 @@ public class GamePresenter implements GameContract.Presenter{
             }
 
             @Override
-            public void onTranslationsLoaded(SparseArray<Translation> translations) {
-                for(int i = 0; i < translations.size(); i++) {
-
-                    int questionId = translations.valueAt(i).getQuestionId();
-
+            public void onTranslationsLoaded(HashMap<TranslationIdentifier, Translation> translations) {
+                for (TranslationIdentifier translationIdentifier: translations.keySet()) {
+                    int questionId = translationIdentifier.getQuestionId();
                     if(mQuestions.get(questionId) != null) {
-                        if(mTranslations.get(questionId) != null) {
-                            //if there is a translation for specific language then we'll use that, otherwise we'll have an english text
-                            if(language.contains(mTranslations.get(questionId).getLanguageId())) {
-                                mTranslations.put(questionId, translations.valueAt(i));
-                            }
+                        if(translations.get(new TranslationIdentifier(questionId, language)) != null) {
+                            mTranslations.put(translationIdentifier.getQuestionId(),
+                                    translations.get(new TranslationIdentifier(questionId, language)));
+                        } else {
+                            mTranslations.put(translationIdentifier.getQuestionId(),
+                                    translations.get(new TranslationIdentifier(questionId, "en")));
                         }
-                        mTranslations.put(questionId, translations.valueAt(i));
                     }
                 }
+                //                for(int i = 0; i < translations.size(); i++) {
+//
+//                    int questionId = translations.valueAt(i).getQuestionId();
+//
+//                    if(mQuestions.get(questionId) != null) {
+//                        if(mTranslations.get(questionId) != null) {
+//                            //if there is a translation for specific language then we'll use that, otherwise we'll have an english text
+//                            if(language.contains(mTranslations.get(questionId).getLanguageId())) {
+//                                mTranslations.put(questionId, translations.valueAt(i));
+//                            }
+//                        }
+//                        mTranslations.put(questionId, translations.valueAt(i));
+//                    }
+//                }
             }
 
             @Override

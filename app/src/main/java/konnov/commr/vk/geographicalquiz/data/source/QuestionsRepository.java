@@ -5,9 +5,12 @@ import android.util.SparseArray;
 
 import androidx.annotation.NonNull;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import konnov.commr.vk.geographicalquiz.data.pojo.Image;
 import konnov.commr.vk.geographicalquiz.data.pojo.Question;
 import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
+import konnov.commr.vk.geographicalquiz.data.pojo.TranslationIdentifier;
 import konnov.commr.vk.geographicalquiz.data.source.local.BitmapStorage;
 
 public class QuestionsRepository implements QuestionsDataSource{
@@ -22,7 +25,7 @@ public class QuestionsRepository implements QuestionsDataSource{
 
     SparseArray<Question> mCachedQuestions; //questionId : question map
 
-    SparseArray<Translation> mCachedTranslations; //questionId : translation map
+    HashMap<TranslationIdentifier, Translation> mCachedTranslations; //questionId : translation map
 
     /**
      * Marks the cache as invalid, to force an update the next time data is requested. This variable
@@ -53,8 +56,8 @@ public class QuestionsRepository implements QuestionsDataSource{
     }
 
     @Override
-    public void getImages(@NonNull SparseArray<Translation> translations, ImagesReceivedCallback callback) {
-
+    public void getImages(@NonNull HashMap<TranslationIdentifier, Translation> translations, ImagesReceivedCallback callback) {
+        //This method is only used in QuestionRemoteDataSource
     }
 
     public Bitmap getImage(String filename) {
@@ -89,7 +92,7 @@ public class QuestionsRepository implements QuestionsDataSource{
                 }
 
                 @Override
-                public void onTranslationsLoaded(SparseArray<Translation> translations) {
+                public void onTranslationsLoaded(HashMap<TranslationIdentifier, Translation> translations) {
                     refreshCacheTranslations(translations);
                     callback.onTranslationsLoaded(translations);
                 }
@@ -108,7 +111,7 @@ public class QuestionsRepository implements QuestionsDataSource{
     }
 
     @Override
-    public void saveTranslation(@NonNull SparseArray<Translation> translations) {
+    public void saveTranslation(@NonNull HashMap<TranslationIdentifier, Translation> translations) {
         mQuestionsLocalDataSource.saveTranslation(translations);
     }
 
@@ -123,7 +126,7 @@ public class QuestionsRepository implements QuestionsDataSource{
             }
 
             @Override
-            public void onTranslationsLoaded(final SparseArray<Translation> translations) {
+            public void onTranslationsLoaded(final HashMap<TranslationIdentifier, Translation> translations) {
                 mQuestionsRemoteDataSource.getImages(translations, new ImagesReceivedCallback() {
                     @Override
                     public void onImagesLoaded(ArrayList<Image> images) {
@@ -160,14 +163,12 @@ public class QuestionsRepository implements QuestionsDataSource{
         mCacheIsDirty = false;
     }
 
-    private void refreshCacheTranslations(SparseArray<Translation> translations) {
+    private void refreshCacheTranslations(HashMap<TranslationIdentifier, Translation> translations) {
         if (mCachedTranslations == null) {
-            mCachedTranslations = new SparseArray<>();
+            mCachedTranslations = new HashMap<>();
         }
         mCachedTranslations.clear();
-        for (int i = 0; i < translations.size(); i++) {
-            mCachedTranslations.put(translations.valueAt(i).getQuestionId(), translations.valueAt(i));
-        }
+        mCachedTranslations = translations;
         mCacheIsDirty = false;
     }
 
@@ -176,7 +177,7 @@ public class QuestionsRepository implements QuestionsDataSource{
         mQuestionsLocalDataSource.saveQuestions(questions);
     }
 
-    private void refreshTranslationsTable(SparseArray<Translation> translations){
+    private void refreshTranslationsTable(HashMap<TranslationIdentifier, Translation> translations){
        mQuestionsLocalDataSource.saveTranslation(translations);
     }
 
@@ -192,7 +193,7 @@ public class QuestionsRepository implements QuestionsDataSource{
             mCachedQuestions = new SparseArray<>();
         }
         if(mCachedTranslations == null) {
-            mCachedTranslations = new SparseArray<>();
+            mCachedTranslations = new HashMap<>();
         }
     }
 }

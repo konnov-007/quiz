@@ -24,6 +24,7 @@ import androidx.annotation.NonNull;
 import konnov.commr.vk.geographicalquiz.data.pojo.Image;
 import konnov.commr.vk.geographicalquiz.data.pojo.Question;
 import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
+import konnov.commr.vk.geographicalquiz.data.pojo.TranslationIdentifier;
 import konnov.commr.vk.geographicalquiz.data.source.QuestionsDataSource;
 import konnov.commr.vk.geographicalquiz.data.Entries;
 import konnov.commr.vk.geographicalquiz.util.AppExecutors;
@@ -54,7 +55,7 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
 
     private int imagesToDownload;
     @Override
-    public void getImages(@NonNull final SparseArray<Translation> translations, final ImagesReceivedCallback callback) {
+    public void getImages(@NonNull final HashMap<TranslationIdentifier, Translation> translations, final ImagesReceivedCallback callback) {
         Runnable fetchingImagesRunnable = new Runnable() {
             @Override
             public void run() {
@@ -107,10 +108,9 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
         mAppExecutors.networkIO().execute(fetchingImagesRunnable);
     }
 
-    private ArrayList<Translation> getTranslationsWithImages(SparseArray<Translation> translations) {
+    private ArrayList<Translation> getTranslationsWithImages(HashMap<TranslationIdentifier, Translation> translations) {
         ArrayList<Translation> translationsWithImages = new ArrayList<>();
-        for(int i = 0; i < translations.size(); i++) {
-            Translation translation = translations.valueAt(i);
+        for (Translation translation: translations.values()){
             if(translation.getImgLocation() != null && !translation.getImgLocation().isEmpty()) {
                 translationsWithImages.add(translation);
             }
@@ -129,7 +129,7 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
     }
 
     @Override
-    public void saveTranslation(@NonNull SparseArray<Translation> translations) {
+    public void saveTranslation(@NonNull HashMap<TranslationIdentifier, Translation> translations) {
         ///there is no save question from user functionality
     }
 
@@ -178,7 +178,7 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
                     @Override
                     public void run() {
                         ArrayList<Object> objectsList = dataSnapshot.getValue(objectsGTypeInd);
-                        final SparseArray<Translation> translations = generateTranslationsMap(objectsList);
+                        final HashMap<TranslationIdentifier, Translation> translations = generateTranslationsMap(objectsList);
                         mAppExecutors.mainThread().execute(new Runnable() {
                             @Override
                             public void run() {
@@ -211,8 +211,8 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
         return questionsMap;
     }
 
-    private SparseArray<Translation> generateTranslationsMap(ArrayList<Object> objectList) {
-        SparseArray<Translation> questionsMap = new SparseArray<>();
+    private HashMap<TranslationIdentifier, Translation> generateTranslationsMap(ArrayList<Object> objectList) {
+        HashMap<TranslationIdentifier, Translation> questionsMap = new HashMap<>();
         for(Object object : objectList) {
             HashMap <String, Object> questionSet = (HashMap<String, Object>) object;
             long questionId = (Long) questionSet.get(Entries.QUESTION_ID);
@@ -224,9 +224,10 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
             String answerThree = (String) questionSet.get(Entries.ANSWER_3);
             String answerFour = (String) questionSet.get(Entries.ANSWER_4);
             String wrongAnswerComment = (String) questionSet.get(Entries.WRONG_ANSWER_COMMENT);
+            TranslationIdentifier translationIdentifier = new TranslationIdentifier((int) questionId, languageId);
             Translation translation = new Translation((int) questionId, languageId, title,
                     imageServerUrl, answerOne, answerTwo, answerThree, answerFour, wrongAnswerComment);
-            questionsMap.put((int) questionId, translation);
+            questionsMap.put(translationIdentifier, translation);
         }
         return questionsMap;
     }

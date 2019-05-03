@@ -5,6 +5,9 @@ import android.util.SparseArray;
 
 import com.crashlytics.android.Crashlytics;
 
+import java.util.HashMap;
+
+import konnov.commr.vk.geographicalquiz.data.pojo.TranslationIdentifier;
 import konnov.commr.vk.geographicalquiz.data.source.QuestionsRepository;
 import konnov.commr.vk.geographicalquiz.data.pojo.Question;
 import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
@@ -34,7 +37,7 @@ public class MainMenuPresenter implements MainMenuContract.Presenter {
             }
 
             @Override
-            public void onTranslationsLoaded(SparseArray<Translation> translations) {
+            public void onTranslationsLoaded(HashMap<TranslationIdentifier, Translation> translations) {
                 Crashlytics.log(Log.DEBUG, "MainMenuPresenter", "Translations received, size: " + translations.size() + ", data: " + translations);
                 mView.showUpdatingQuestionsSuccess();
             }
