@@ -47,7 +47,7 @@ public class GameActivity extends AppCompatActivity implements GameContract.View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_game);
+        setContentView(R.layout.activity_game);
         initUI();
     }
 
