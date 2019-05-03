@@ -28,7 +28,9 @@ public class MainMenuPresenter implements MainMenuContract.Presenter {
      */
     @Override
     public void fetchQuestions() {
-        mView.showLoadingQuestionsStarted();
+        if(mView != null) {
+            mView.showLoadingQuestionsStarted();
+        }
 
         mQuestionsRepository.getQuestions(new QuestionsDataSource.LoadQuestionsCallback() {
             @Override
@@ -39,12 +41,16 @@ public class MainMenuPresenter implements MainMenuContract.Presenter {
             @Override
             public void onTranslationsLoaded(HashMap<TranslationIdentifier, Translation> translations) {
                 Crashlytics.log(Log.DEBUG, "MainMenuPresenter", "Translations received, size: " + translations.size() + ", data: " + translations);
-                mView.showUpdatingQuestionsSuccess();
+                if(mView != null) {
+                    mView.showUpdatingQuestionsSuccess();
+                }
             }
 
             @Override
             public void onDataNotAvailable() {
-                mView.showLoadingQuestionsError();
+                if(mView != null) {
+                    mView.showLoadingQuestionsError();
+                }
             }
         });
     }

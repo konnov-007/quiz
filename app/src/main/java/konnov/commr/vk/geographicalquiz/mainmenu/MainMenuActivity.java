@@ -23,7 +23,7 @@ public class MainMenuActivity extends AppCompatActivity implements MainMenuContr
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_menu);
 
         mPresenter = new MainMenuPresenter(Injection.provideQuestionsRepository(this));
         initUI();
@@ -45,9 +45,11 @@ public class MainMenuActivity extends AppCompatActivity implements MainMenuContr
             }
             case R.id.about_button: {
                 startAbout();
+                break;
             }
             case R.id.update_db_button: {
                 updateDB();
+                break;
             }
         }
     }
