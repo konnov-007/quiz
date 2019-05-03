@@ -47,6 +47,9 @@ public class BitmapStorage {
                 for (Image image : images) {
                     try {
                         String filename = image.getFilename();
+                        if(isFilePresent(filename)) {
+                            continue;
+                        }
                         FileOutputStream fos = mContext.openFileOutput(filename, Context.MODE_PRIVATE);
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                         image.getBitmap().compress(Bitmap.CompressFormat.PNG, 100, stream);
@@ -71,6 +74,21 @@ public class BitmapStorage {
             Crashlytics.logException(e);
         }
         return null;
+    }
+
+    /**
+     *
+     * @return false if file doesn't exist, true if file exists
+     */
+    private boolean isFilePresent(String filename) {
+        File dir = mContext.getFilesDir();
+        File[] allFiles = dir.listFiles();
+        for (File file : allFiles) {
+            if(file.getName().equals(filename)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void deleteAllImages() {

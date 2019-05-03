@@ -26,8 +26,12 @@ public class GamePresenter implements GameContract.Presenter{
         mQuestionsRepository = questionsRepository;
     }
 
+    /**
+     * Gets questions for selected difficulty and selected language
+     * if selected language doesn't exist on the server then it's automatically set to english
+     */
     @Override
-    public void fetchQuestionForDifficulty(final int difficulty) {
+    public void fetchQuestionForSession(final int difficulty, final String language) {
         mQuestionsRepository.getQuestions(new QuestionsDataSource.LoadQuestionsCallback() {
             @Override
             public void onQuestionsLoaded(SparseArray<Question> questions) {
@@ -46,6 +50,12 @@ public class GamePresenter implements GameContract.Presenter{
                     int questionId = translations.valueAt(i).getQuestionId();
 
                     if(mQuestions.get(questionId) != null) {
+                        if(mTranslations.get(questionId) != null) {
+                            //if there is a translation for specific language then we'll use that, otherwise we'll have an english text
+                            if(language.contains(mTranslations.get(questionId).getLanguageId())) {
+                                mTranslations.put(questionId, translations.valueAt(i));
+                            }
+                        }
                         mTranslations.put(questionId, translations.valueAt(i));
                     }
                 }

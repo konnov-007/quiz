@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.Locale;
+
 import konnov.commr.vk.geographicalquiz.Injection;
 import konnov.commr.vk.geographicalquiz.R;
 import konnov.commr.vk.geographicalquiz.data.pojo.Translation;
@@ -37,9 +39,9 @@ public class GameActivity extends AppCompatActivity implements GameContract.View
 
     private GamePresenter mPresenter;
 
-    private final int DELAY_AFTER_WRONG_ANSWER = 3500;
+    private final int DELAY_AFTER_WRONG_ANSWER = 35;
 
-    private final int DELAY_AFTER_RIGHT_ANSWER = 2000;
+    private final int DELAY_AFTER_RIGHT_ANSWER = 20;
 
 
     @Override
@@ -79,7 +81,7 @@ public class GameActivity extends AppCompatActivity implements GameContract.View
         Intent intent = getIntent();
         int difficultyLevel = intent.getIntExtra("difficultyLevel", 0);
 
-        mPresenter.fetchQuestionForDifficulty(difficultyLevel);
+        mPresenter.fetchQuestionForSession(difficultyLevel, Locale.getDefault().getLanguage());
 
     }
 

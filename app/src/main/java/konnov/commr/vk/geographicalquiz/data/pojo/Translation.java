@@ -3,6 +3,7 @@ package konnov.commr.vk.geographicalquiz.data.pojo;
 import android.os.Build;
 
 import java.util.Objects;
+import java.util.UUID;
 
 import javax.annotation.Nullable;
 
@@ -11,12 +12,20 @@ import androidx.annotation.RequiresApi;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
 import konnov.commr.vk.geographicalquiz.data.Entries;
 
 @Entity(tableName = Entries.TRANSLATION_TABLE)
 public final class Translation {
-//TODO generate primary key for translation with UUID.randomUUID().toString() in order to store translations of different languages in one DB
+    /**
+     * The point of translation id is to save multiple translations for one question in a database
+     * that have the same question id but different language id
+     */
+    @NonNull
     @PrimaryKey
+    @ColumnInfo(name = "translation_id")
+    private String translationId = UUID.randomUUID().toString();
+
     @ColumnInfo(name = Entries.QUESTION_ID)
     private int questionId;
 
@@ -114,6 +123,15 @@ public final class Translation {
 
     public void setImgLocation(@Nullable String imgLocation) {
         this.imgLocation = imgLocation;
+    }
+
+
+    public void setTranslationId(String translationId) {
+        this.translationId = translationId;
+    }
+
+    public String getTranslationId() {
+        return translationId;
     }
 
     @NonNull

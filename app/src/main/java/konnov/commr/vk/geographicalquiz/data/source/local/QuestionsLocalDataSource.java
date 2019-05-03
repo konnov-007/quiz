@@ -53,14 +53,14 @@ public class QuestionsLocalDataSource implements QuestionsDataSource {
             public void run() {
                 final List<Translation> translationsList = mTranslationsDao.getTranslations();
                 final List<Question> questionsList = mQuestionsDao.getQuestions();
-
+                final SparseArray<Question> questionSparseArray = Misc.questionListToSparseArray(questionsList);
+                final SparseArray<Translation> translationsSparseArray = Misc.translationListToSparseArray(translationsList);
                 mAppExecutors.mainThread().execute(new Runnable() {
                     @Override
                     public void run() {
-                        if(translationsList != null && questionsList != null &&
-                                translationsList.size() != 0 && questionsList.size() != 0) {
-                            callback.onQuestionsLoaded(Misc.questionListToSparseArray(questionsList));
-                            callback.onTranslationsLoaded(Misc.translationListToSparseArray(translationsList));
+                        if(translationsList.size() != 0 && questionsList.size() != 0) {
+                            callback.onQuestionsLoaded(questionSparseArray);
+                            callback.onTranslationsLoaded(translationsSparseArray);
                         } else {
                             callback.onDataNotAvailable();
                         }

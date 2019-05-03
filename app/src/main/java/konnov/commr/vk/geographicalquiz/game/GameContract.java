@@ -23,7 +23,7 @@ public interface GameContract {
 
     interface Presenter extends BasePresenter<View>{
 
-        void fetchQuestionForDifficulty(int difficulty);
+        void fetchQuestionForSession(int difficulty, String language);
 
         void answerButtonClick(int buttonNumber);
 
