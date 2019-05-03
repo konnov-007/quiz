@@ -79,7 +79,7 @@ public class GameActivity extends AppCompatActivity implements GameContract.View
         mPresenter = new GamePresenter(Injection.provideQuestionsRepository(this));
 
         Intent intent = getIntent();
-        int difficultyLevel = intent.getIntExtra("difficultyLevel", 0);
+        int difficultyLevel = intent.getIntExtra("level", 0);
 
         mPresenter.fetchQuestionForSession(difficultyLevel, Locale.getDefault().getLanguage());
 

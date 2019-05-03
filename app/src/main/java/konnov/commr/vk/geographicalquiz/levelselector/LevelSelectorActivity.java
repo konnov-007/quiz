@@ -44,11 +44,10 @@ public class LevelSelectorActivity extends AppCompatActivity implements  LevelSe
                 intent.putExtra("level", level);
                 startActivity(intent);
                 break;
-            case R.id.medium_level_button: //TODO implement other difficulties
+            case R.id.medium_level_button:
                 level = 1;
-                Toast.makeText(this, "Not made yet", Toast.LENGTH_SHORT).show();
-//                intent.putExtra("level 2", level);
-//                startActivity(intent);
+                intent.putExtra("level", level);
+                startActivity(intent);
                 break;
             case R.id.difficult_level_button:
                 Toast.makeText(this, "Not made yet", Toast.LENGTH_SHORT).show();

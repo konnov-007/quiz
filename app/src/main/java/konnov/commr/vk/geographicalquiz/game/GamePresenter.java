@@ -60,20 +60,6 @@ public class GamePresenter implements GameContract.Presenter{
                         }
                     }
                 }
-                //                for(int i = 0; i < translations.size(); i++) {
-//
-//                    int questionId = translations.valueAt(i).getQuestionId();
-//
-//                    if(mQuestions.get(questionId) != null) {
-//                        if(mTranslations.get(questionId) != null) {
-//                            //if there is a translation for specific language then we'll use that, otherwise we'll have an english text
-//                            if(language.contains(mTranslations.get(questionId).getLanguageId())) {
-//                                mTranslations.put(questionId, translations.valueAt(i));
-//                            }
-//                        }
-//                        mTranslations.put(questionId, translations.valueAt(i));
-//                    }
-//                }
             }
 
             @Override
