@@ -78,6 +78,9 @@ public class GamePresenter implements GameContract.Presenter{
      */
     @Override
     public void answerButtonClick(int buttonNumber) {
+        if(mQuestionIndex == mQuestions.size()) {
+            return;
+        }
         if(buttonNumber == mQuestions.valueAt(mQuestionIndex).getRightAnswer()) {
             mScore++;
             mView.reportRightAnswer(buttonNumber);
