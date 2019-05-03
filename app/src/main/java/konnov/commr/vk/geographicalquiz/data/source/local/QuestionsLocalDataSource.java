@@ -45,7 +45,7 @@ public class QuestionsLocalDataSource implements QuestionsDataSource {
 
     @Override
     public void getImages(@NonNull HashMap<TranslationIdentifier, Translation> translations, ImagesReceivedCallback callback) {
-        //TODO
+
     }
 
     @Override

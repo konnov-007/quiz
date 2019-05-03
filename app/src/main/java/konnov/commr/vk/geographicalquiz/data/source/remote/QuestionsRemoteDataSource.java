@@ -111,7 +111,7 @@ public class QuestionsRemoteDataSource implements QuestionsDataSource {
     private ArrayList<Translation> getTranslationsWithImages(HashMap<TranslationIdentifier, Translation> translations) {
         ArrayList<Translation> translationsWithImages = new ArrayList<>();
         for (Translation translation: translations.values()){
-            if(translation.getImgLocation() != null && !translation.getImgLocation().isEmpty()) { //todo include only english translations, because russian and english translations will use the same file, no need to fetch picture twice
+            if(translation.getImgLocation() != null && !translation.getImgLocation().isEmpty() && translation.getLanguageId().equals("en")) {
                 translationsWithImages.add(translation);
             }
         }
