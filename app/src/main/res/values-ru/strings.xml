@@ -23,7 +23,9 @@
     <string name="back_to_main_menu_alert_message">Вы уверены, что вы хотите вернуться в главное меню?</string>
 
     <!--FinishGameActivity.java-->
-    <string name="congrats">Поздравляем!! Ваш счет: %1$d</string>
+    <string name="congrats">Поздравляем!! Ваш счет: %1$d правильных ответов из %2$d</string>
+    <string name="return_main_menu">В главное меню</string>
+
 
     <!--AboutActivity.java-->
     <string name="about_no_email">Нет почтовых приложений для отправки</string>

@@ -16,7 +16,7 @@ public interface GameContract {
 
         void reportRightAnswer(int rightAnswer);
 
-        void showGameResults(int score);
+        void showGameResults(int score, int questionsNumber);
 
         void showLoadingError();
     }

@@ -22,7 +22,8 @@
     <string name="back_to_main_menu_alert_message">Are you sure you want to go to main menu?</string>
 
     <!--FinishGameActivity.java-->
-    <string name="congrats">Congratulations! Your score is %1$d</string>
+    <string name="congrats">Congratulations! Your score is %1$d out of %2$d</string>
+    <string name="return_main_menu">Return to main menu</string>
 
     <!--AboutActivity.java-->
     <string name="preference_version_text">Version</string>

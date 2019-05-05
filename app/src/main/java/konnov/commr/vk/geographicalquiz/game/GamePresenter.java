@@ -94,7 +94,7 @@ public class GamePresenter implements GameContract.Presenter{
     @Override
     public void provideQuestionText() {
         if(mQuestionIndex >= mQuestions.size()) {
-            mView.showGameResults(mScore);
+            mView.showGameResults(mScore, mQuestions.size());
             return;
         }
         Translation questionText = mTranslations.get(mQuestions.valueAt(mQuestionIndex).getQuestionId());

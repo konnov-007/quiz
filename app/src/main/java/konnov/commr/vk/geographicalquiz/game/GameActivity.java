@@ -182,9 +182,10 @@ public class GameActivity extends AppCompatActivity implements GameContract.View
     }
 
     @Override
-    public void showGameResults(int score) {
+    public void showGameResults(int score, int totalNumberOfQuestions) {
         Intent intent = new Intent(GameActivity.this, FinishGameActivity.class);
-        intent.putExtra("int_score", score);
+        intent.putExtra("score", score);
+        intent.putExtra("questions_number", totalNumberOfQuestions);
         startActivity(intent);
     }
 
