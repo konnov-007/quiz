@@ -35,6 +35,7 @@ public class MainMenuActivity extends AppCompatActivity implements MainMenuContr
         toolbar.setTitleTextColor(Color.WHITE);
 
         mProgressDialog = new ProgressDialog(MainMenuActivity.this);
+        mProgressDialog.setCancelable(false);
     }
 
     public void onClick(View v) {
