@@ -39,9 +39,9 @@ public class GameActivity extends AppCompatActivity implements GameContract.View
 
     private GamePresenter mPresenter;
 
-    private final int DELAY_AFTER_WRONG_ANSWER = 35;
+    private final int DELAY_AFTER_WRONG_ANSWER = 3500;
 
-    private final int DELAY_AFTER_RIGHT_ANSWER = 20;
+    private final int DELAY_AFTER_RIGHT_ANSWER = 2000;
 
 
     @Override

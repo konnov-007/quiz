@@ -6,10 +6,6 @@
         android:title="@string/preference_version_text">
     </Preference>
     <Preference
-        android:key="about_pro"
-        android:title="@string/preference_support_text">
-    </Preference>
-    <Preference
         android:key="about_rate"
         android:title="@string/preference_rate_text">
     </Preference>

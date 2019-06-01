@@ -5,7 +5,7 @@
     <!--MainMenuActivity.java-->
     <string name="new_game_btn_text">Игра</string>
     <string name="setting_btn_text">Настройки</string>
-    <string name="about_text">О игре</string>
+    <string name="about_text">Об игре</string>
     <string name="exit_btn_text">Выход</string>
     <string name="update_db">Обновить данные</string>
     <string name="network_error">Проверьте подключение к интернету</string>
